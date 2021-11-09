@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6262bcfc3cc64774fa11568c117dd443, type: 3}
   m_Name: DroneTile
   m_EditorClassIdentifier: 
-  type: 0
-  tileBase: {fileID: 0}
+  type: 3
+  tileBase: {fileID: 11400000, guid: a9ae7896bbcd5b24890118ff2bf3917d, type: 2}
   recipes: []
