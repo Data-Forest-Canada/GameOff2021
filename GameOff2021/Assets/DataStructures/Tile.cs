@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 [CreateAssetMenu(menuName = "Tile")]
-public class Tile : ScriptableObject
+public class Tile : UnityEngine.Tilemaps.Tile
 {
     [SerializeField] TileType type;
     public TileType Type
