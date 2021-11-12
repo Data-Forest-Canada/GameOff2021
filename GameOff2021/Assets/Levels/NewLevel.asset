@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51738736c159b0b448aeb8fbfe6145b6, type: 3}
-  m_Name: EmptyDrone
+  m_Script: {fileID: 11500000, guid: fcd4682a5d525eb4a8ca3548e1db071d, type: 3}
+  m_Name: NewLevel
   m_EditorClassIdentifier: 
-  input: {fileID: 0}
-  outPut: {fileID: 0}
+  Tilemap: {fileID: 2046131461, guid: 69ce5560d88a88344a2169027bb91098, type: 3}

@@ -7,7 +7,7 @@ public class PlacesTiles : MonoBehaviour
 {
     public Tile toPlace;
     public Tilemap tilemap;
-    
+
     public void ChangeTileToPlace(Tile tile)
     {
         toPlace = tile;
@@ -29,6 +29,8 @@ public class PlacesTiles : MonoBehaviour
 
     private void Update()
     {
+        // Is this for a cooldown on placing tiles? If so, my Timer class would help make this easier B)
+        // I'll put it into the project just in case - Brad
         if (!active)
         {
             delta = 1;
@@ -38,7 +40,7 @@ public class PlacesTiles : MonoBehaviour
             delta -= Time.deltaTime;
         }
 
-        if(active && delta < 0)
+        if (active && delta < 0)
         {
             active = false;
         }
