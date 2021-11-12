@@ -17,15 +17,15 @@ public class PlacesTiles : MonoBehaviour
     {
         //Debug.Log(tilemap.GetTile<Tile>(cell));
         Tile atLocation = tilemap.GetTile<Tile>(cell);
-        Tile newTile = atLocation?.CombineWith(toPlace);
-        tilemap.SetTile(cell, newTile ?? atLocation);
+        Tile newTile = atLocation?.CombineWith(toPlace) ?? atLocation;
+        tilemap.SetTile(cell, newTile);
         Debug.Log($"{toPlace} + {atLocation} = {newTile}");
     }
 
     bool isLeftClicking() => Input.GetMouseButtonDown(0);
     bool active = false;
 
-    float delta = 1;
+    float delta = 0.2f;
 
     private void Update()
     {
