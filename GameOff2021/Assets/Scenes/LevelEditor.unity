@@ -521,6 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileMap: {fileID: 2046131464}
+  defaultTile: {fileID: 0}
 --- !u!4 &504869005
 Transform:
   m_ObjectHideFlags: 0
@@ -1006,7 +1007,6 @@ GameObject:
   - component: {fileID: 1771779611}
   - component: {fileID: 1771779610}
   - component: {fileID: 1771779612}
-  - component: {fileID: 1771779613}
   - component: {fileID: 1771779614}
   m_Layer: 0
   m_Name: Grid
@@ -1055,21 +1055,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1687258584}
---- !u!114 &1771779613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1771779609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ef6aaec2084c0a4399ec4fed6952c60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  testing: 0
-  map: {fileID: 2046131464}
-  tileBase: {fileID: 0}
 --- !u!114 &1771779614
 MonoBehaviour:
   m_ObjectHideFlags: 0

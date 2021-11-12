@@ -35,5 +35,5 @@ MonoBehaviour:
   m_Flags: 1
   m_ColliderType: 1
   type: 1
-  tileBase: {fileID: 11400000, guid: 9f1806fc728f7ff4e9822df8f04b49fe, type: 2}
-  recipes: []
+  recipes:
+  - {fileID: 11400000, guid: de8a81c08db5d4e49a924434b3ecda31, type: 2}
