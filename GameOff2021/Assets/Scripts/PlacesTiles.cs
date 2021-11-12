@@ -15,8 +15,11 @@ public class PlacesTiles : MonoBehaviour
 
     public void PlaceTileAtCell(Vector3Int cell)
     {
-        Debug.Log(tilemap.GetTile<Tile>(cell));
-        //Tile atLocation = tilemap.GetTile<Tile>(cell);
+        //Debug.Log(tilemap.GetTile<Tile>(cell));
+        Tile atLocation = tilemap.GetTile<Tile>(cell);
+        Tile newTile = atLocation?.CombineWith(toPlace);
+        tilemap.SetTile(cell, newTile ?? atLocation);
+        Debug.Log($"{toPlace} + {atLocation} = {newTile}");
     }
 
     bool isLeftClicking() => Input.GetMouseButtonDown(0);

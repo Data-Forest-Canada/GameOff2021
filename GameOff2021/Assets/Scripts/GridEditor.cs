@@ -20,7 +20,8 @@ public class GridEditor : MonoBehaviour
     {
         if (isLeftClicking() && SelectedTile != null)
         {
-            setHoveredTileTo(SelectedTile.TileBase);
+            setHoveredTileTo(SelectedTile);
+            //setHoveredTileTo(SelectedTile.TileBase);
         }
         else if (isRightClicking())
         {

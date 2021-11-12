@@ -13,12 +13,12 @@ public class Tile : UnityEngine.Tilemaps.Tile
         private set { Type = value; }
     }
 
-    [SerializeField] TileBase tileBase;
-    public TileBase TileBase
-    {
-        get { return tileBase; }
-        private set { tileBase = value; }
-    }
+    //[SerializeField] TileBase tileBase;
+    //public TileBase TileBase
+    //{
+    //    get { return tileBase; }
+    //    private set { tileBase = value; }
+    //}
 
     [SerializeField] TileRecipe[] recipes;
 
