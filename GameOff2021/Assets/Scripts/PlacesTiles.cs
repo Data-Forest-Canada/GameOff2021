@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class PlacesTiles : MonoBehaviour
 {
     public Tile toPlace;
     public Tilemap tilemap;
+    public GameObject completionText;
     
 
     public void ChangeTileToPlace(Tile tile)
@@ -18,15 +20,37 @@ public class PlacesTiles : MonoBehaviour
     {
         //Debug.Log(tilemap.GetTile<Tile>(cell));
         //Debug.Log(toPlace);
-        Debug.Log(cell);
+        //Debug.Log(cell);
         Tile atLocation = tilemap.GetTile<Tile>(cell);
         Tile newTile = atLocation?.CombineWith(toPlace) ?? atLocation;
         tilemap.SetTile(cell, newTile);
 
 
-        Debug.Log($"{toPlace} + {atLocation} = {newTile}");
+        //Debug.Log($"{toPlace} + {atLocation} = {newTile}");
 
+        if (CheckCompletion())
+            completionText.SetActive(true);
 
+    }
+
+    public bool CheckCompletion()
+    {
+        BoundsInt.PositionEnumerator pos = tilemap.cellBounds.allPositionsWithin;
+        while (pos.MoveNext())
+        {
+            if (tilemap.HasTile(pos.Current))
+            {
+                if (tilemap.GetTile<Tile>(pos.Current)?.Type != TileType.DRONE)
+                {
+                    Debug.Log(pos.Current);
+                    Debug.Log(tilemap.GetTile(pos.Current));
+                    Debug.Log(tilemap.GetTile<Tile>(pos.Current)?.Type);
+                    return false;
+                }
+                    
+            }
+        }
+        return true;
     }
 
     bool isLeftClicking() => Input.GetMouseButtonDown(0);
