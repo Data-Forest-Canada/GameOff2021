@@ -7,6 +7,7 @@ public class PlacesTiles : MonoBehaviour
 {
     public Tile toPlace;
     public Tilemap tilemap;
+    
 
     public void ChangeTileToPlace(Tile tile)
     {
@@ -16,11 +17,16 @@ public class PlacesTiles : MonoBehaviour
     public void PlaceTileAtCell(Vector3Int cell)
     {
         //Debug.Log(tilemap.GetTile<Tile>(cell));
-        Debug.Log(toPlace);
+        //Debug.Log(toPlace);
+        Debug.Log(cell);
         Tile atLocation = tilemap.GetTile<Tile>(cell);
         Tile newTile = atLocation?.CombineWith(toPlace) ?? atLocation;
         tilemap.SetTile(cell, newTile);
-        //Debug.Log($"{toPlace} + {atLocation} = {newTile}");
+
+
+        Debug.Log($"{toPlace} + {atLocation} = {newTile}");
+
+
     }
 
     bool isLeftClicking() => Input.GetMouseButtonDown(0);
