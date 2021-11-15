@@ -16,4 +16,4 @@ MonoBehaviour:
   Pieces:
   - {fileID: 11400000, guid: 805956c292375284484e3497a0949cf9, type: 2}
   - {fileID: 11400000, guid: 78524d4bc3e765a4582c13bd9a8f3d86, type: 2}
-  - {fileID: 11400000, guid: adeb46eec1400764d952fecf2c5dd761, type: 2}
+  - {fileID: 11400000, guid: 805956c292375284484e3497a0949cf9, type: 2}

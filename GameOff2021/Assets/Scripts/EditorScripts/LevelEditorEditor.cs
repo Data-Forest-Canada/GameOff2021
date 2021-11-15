@@ -39,6 +39,12 @@ public class LevelEditorEditor : Editor
 
     void loadLevel()
     {
+        if (level == null)
+        {
+            Debug.Log("Please assign a level to the LevelEditor before loading");
+            return;
+        }
+
         Tilemap levelMap = level.Tilemap.GetComponent<Tilemap>();
         TileBase[] allTiles = levelMap.GetTilesBlock(levelMap.cellBounds);
 
@@ -167,14 +173,28 @@ public class LevelEditorEditor : Editor
 
         BoundsInt bounds = map.cellBounds;
 
-        // TODO bounds are nice but still have extra space. Finding a point to use as a pivot is probably better
+
+        Vector3Int pivot = Vector3Int.zero;
+        // Need to use two variables because Vector3Int is non-nullable;
+        bool firstTileNotFound = true;
+
         for (int x = bounds.xMin; x <= bounds.xMax; x++)
         {
             for (int y = bounds.yMin; y <= bounds.yMax; y++)
             {
                 Vector3Int position = new Vector3Int(x, y, 0);
                 Tile tileAt = (Tile)map.GetTile(position);
-                if (tileAt != null) newMultiTile.AddTile(tileAt, position);
+
+                if (tileAt != null)
+                {
+                    if (firstTileNotFound)
+                    {
+                        firstTileNotFound = false;
+                        pivot = position;
+                    }
+
+                    newMultiTile.AddTile(tileAt, position - pivot);
+                }
             }
         }
 
