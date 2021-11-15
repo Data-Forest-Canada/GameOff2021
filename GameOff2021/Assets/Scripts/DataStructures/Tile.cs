@@ -13,13 +13,6 @@ public class Tile : UnityEngine.Tilemaps.Tile
         private set { Type = value; }
     }
 
-    //[SerializeField] TileBase tileBase;
-    //public TileBase TileBase
-    //{
-    //    get { return tileBase; }
-    //    private set { tileBase = value; }
-    //}
-
     [SerializeField] TileRecipe[] recipes;
 
     // Utilizing a recipe system, we can add or remove combinations modularly.

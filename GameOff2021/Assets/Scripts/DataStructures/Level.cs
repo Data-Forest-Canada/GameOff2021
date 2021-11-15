@@ -7,4 +7,5 @@ using UnityEngine.Tilemaps;
 public class Level : ScriptableObject
 {
     public GameObject Tilemap;
+    public List<MultiTile> Pieces;
 }
