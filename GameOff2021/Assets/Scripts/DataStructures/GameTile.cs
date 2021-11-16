@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[CreateAssetMenu(menuName = "Tile")]
-public class Tile : UnityEngine.Tilemaps.Tile
+[CreateAssetMenu(menuName = "GameTile")]
+public class GameTile : UnityEngine.Tilemaps.Tile
 {
     [SerializeField] TileType type;
     public TileType Type
@@ -17,7 +17,7 @@ public class Tile : UnityEngine.Tilemaps.Tile
 
     // Utilizing a recipe system, we can add or remove combinations modularly.
     // This way we don't need to define a new class for every type of tile and manually code each interation.
-    public virtual Tile CombineWith(Tile tile)
+    public virtual GameTile CombineWith(GameTile tile)
     {
         foreach (TileRecipe recipe in recipes)
         {

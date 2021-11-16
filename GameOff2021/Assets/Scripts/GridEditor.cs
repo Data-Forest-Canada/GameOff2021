@@ -7,9 +7,9 @@ using UnityEngine.Tilemaps;
 public class GridEditor : MonoBehaviour
 {
     [SerializeField] Tilemap tileMap;
-    [SerializeField] Tile defaultTile;
+    [SerializeField] GameTile defaultTile;
 
-    public static Tile SelectedTile;
+    public static GameTile SelectedTile;
 
     private void Awake()
     {
@@ -38,7 +38,7 @@ public class GridEditor : MonoBehaviour
         tileMap.SetTile(cellHovered, tileBase);
     }
 
-    public void ChangeSelectedTile(Tile tile)
+    public void ChangeSelectedTile(GameTile tile)
     {
         SelectedTile = tile;
     }

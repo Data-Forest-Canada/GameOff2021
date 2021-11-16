@@ -183,7 +183,7 @@ public class LevelEditorEditor : Editor
             for (int y = bounds.yMin; y <= bounds.yMax; y++)
             {
                 Vector3Int position = new Vector3Int(x, y, 0);
-                Tile tileAt = (Tile)map.GetTile(position);
+                GameTile tileAt = (GameTile)map.GetTile(position);
 
                 if (tileAt != null)
                 {

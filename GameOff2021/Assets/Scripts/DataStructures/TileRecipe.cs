@@ -5,15 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Recipe")]
 public class TileRecipe : ScriptableObject
 {
-    [SerializeField] Tile input;
-    [SerializeField] Tile outPut;
+    [SerializeField] GameTile input;
+    [SerializeField] GameTile outPut;
 
-    public bool CanCombine(Tile tile)
+    public bool CanCombine(GameTile tile)
     {
         return tile.Type == input.Type;
     }
 
-    public Tile Combine(Tile tile)
+    public GameTile Combine(GameTile tile)
     {
         if (CanCombine(tile)) return outPut;
         return null;

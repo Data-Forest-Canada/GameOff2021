@@ -12,9 +12,9 @@ public class MultiTile : ScriptableObject
     public class OffsetTile
     {
         public Vector3Int Offset;
-        public Tile Tile;
+        public GameTile Tile;
 
-        public OffsetTile(Tile tile, Vector3Int position)
+        public OffsetTile(GameTile tile, Vector3Int position)
         {
             Tile = tile;
             Offset = position;
@@ -25,8 +25,8 @@ public class MultiTile : ScriptableObject
 
     public Vector3Int[] Positions() => OffsetTiles.Select(tile => tile.Offset).ToArray();
 
-    public Tile[] Tiles() => OffsetTiles.Select(tile => tile.Tile).ToArray();
-    public void AddTile(Tile tile, Vector3Int position) => OffsetTiles.Add(new OffsetTile(tile, position));
+    public GameTile[] Tiles() => OffsetTiles.Select(tile => tile.Tile).ToArray();
+    public void AddTile(GameTile tile, Vector3Int position) => OffsetTiles.Add(new OffsetTile(tile, position));
 
     // Instead of making a tilemap, I changed this to set one instead. 
     // Creating a component and adding it programatically to gameobject is more compicated and this is an easier way. 
@@ -35,18 +35,12 @@ public class MultiTile : ScriptableObject
         tilemap.SetTiles(Positions(), Tiles());
     }
 
-    public bool CanBePlacedAt(Tilemap tilemap, Vector3Int position)
-    {
-        // TODO
-        return false;
-    }
-
     // This is a way to see if two multi tiles are functionally the same.
     // An equal multi tile contains the same tiles in the same positions but not necessarily the same order in the list.
     public bool Equals(MultiTile tileToCompare)
     {
-        Dictionary<Vector3Int, Tile> otherTiles = mapToDictionary(tileToCompare);
-        Dictionary<Vector3Int, Tile> ourTiles = mapToDictionary(this);
+        Dictionary<Vector3Int, GameTile> otherTiles = mapToDictionary(tileToCompare);
+        Dictionary<Vector3Int, GameTile> ourTiles = mapToDictionary(this);
 
         foreach (Vector3Int position in otherTiles.Keys)
         {
@@ -58,9 +52,15 @@ public class MultiTile : ScriptableObject
         return true;
     }
 
-    Dictionary<Vector3Int, Tile> mapToDictionary(MultiTile given)
+    public override string ToString()
     {
-        Dictionary<Vector3Int, Tile> tiles = new Dictionary<Vector3Int, Tile>();
+        // TODO
+        return null;
+    }
+
+    Dictionary<Vector3Int, GameTile> mapToDictionary(MultiTile given)
+    {
+        Dictionary<Vector3Int, GameTile> tiles = new Dictionary<Vector3Int, GameTile>();
 
         foreach (OffsetTile tile in given.OffsetTiles)
         {

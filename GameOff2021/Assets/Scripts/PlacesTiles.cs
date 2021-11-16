@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class PlacesTiles : MonoBehaviour
 {
-    public Tile toPlace;
+    public GameTile toPlace;
     public Tilemap tilemap;
     public GameObject completionText;
-    
 
-    public void ChangeTileToPlace(Tile tile)
+
+    public void ChangeTileToPlace(GameTile tile)
     {
         toPlace = tile;
     }
@@ -21,8 +21,8 @@ public class PlacesTiles : MonoBehaviour
         //Debug.Log(tilemap.GetTile<Tile>(cell));
         //Debug.Log(toPlace);
         //Debug.Log(cell);
-        Tile atLocation = tilemap.GetTile<Tile>(cell);
-        Tile newTile = atLocation?.CombineWith(toPlace) ?? atLocation;
+        GameTile atLocation = tilemap.GetTile<GameTile>(cell);
+        GameTile newTile = atLocation?.CombineWith(toPlace) ?? atLocation;
         tilemap.SetTile(cell, newTile);
 
 
@@ -40,14 +40,14 @@ public class PlacesTiles : MonoBehaviour
         {
             if (tilemap.HasTile(pos.Current))
             {
-                if (tilemap.GetTile<Tile>(pos.Current)?.Type != TileType.DRONE)
+                if (tilemap.GetTile<GameTile>(pos.Current)?.Type != TileType.DRONE)
                 {
                     Debug.Log(pos.Current);
                     Debug.Log(tilemap.GetTile(pos.Current));
-                    Debug.Log(tilemap.GetTile<Tile>(pos.Current)?.Type);
+                    Debug.Log(tilemap.GetTile<GameTile>(pos.Current)?.Type);
                     return false;
                 }
-                    
+
             }
         }
         return true;
