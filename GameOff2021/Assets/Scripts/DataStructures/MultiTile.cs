@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -54,8 +55,14 @@ public class MultiTile : ScriptableObject
 
     public override string ToString()
     {
-        // TODO
-        return null;
+        StringBuilder builder = new StringBuilder();
+
+        foreach (OffsetTile tile in OffsetTiles)
+        {
+            builder.Append(tile.Tile.Type.ToString() + "At" + tile.Offset.ToString() + ",");
+        }
+
+        return builder.ToString();
     }
 
     Dictionary<Vector3Int, GameTile> mapToDictionary(MultiTile given)

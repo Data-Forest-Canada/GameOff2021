@@ -9,14 +9,39 @@ public class LevelEditor : MonoBehaviour
     public Level Level;
     public Tilemap Tilemap;
     public GameObject PiecePrefab;
-    public Transform TilemapParent;
-    public List<GameObject> Pieces;
+    public Transform PiecesParent;
+    [HideInInspector] public List<GameObject> Pieces;
 
-    public void AddPiece(GameObject GO) => Pieces.Add(GO);
-
-    // TODO Pieces on changes?
     private void Update()
     {
-        //Debug.Log("Something happened");
+        RecalculatePieces();
+    }
+    public void AddPiece(GameObject GO) => Pieces.Add(GO);
+
+    public void AddPiece()
+    {
+        GameObject newTilemapObject = Instantiate(PiecePrefab, Vector3.zero, Quaternion.identity, PiecesParent);
+        AddPiece(newTilemapObject);
+    }
+
+
+    public void ResetPieces()
+    {
+        RecalculatePieces();
+
+        foreach (GameObject go in Pieces)
+        {
+            DestroyImmediate(go);
+        }
+    }
+
+    public void RecalculatePieces()
+    {
+        Pieces.Clear();
+
+        foreach (Transform piece in PiecesParent)
+        {
+            Pieces.Add(piece.gameObject);
+        }
     }
 }

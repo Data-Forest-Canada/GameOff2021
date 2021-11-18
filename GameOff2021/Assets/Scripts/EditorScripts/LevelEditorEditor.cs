@@ -22,8 +22,11 @@ public class LevelEditorEditor : Editor
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
-
-        if (GUILayout.Button("Save Level"))
+        if (GUILayout.Button("New Level"))
+        {
+            newLevel();
+        }
+        else if (GUILayout.Button("Save Level"))
         {
             saveLevel();
         }
@@ -37,6 +40,17 @@ public class LevelEditorEditor : Editor
         }
     }
 
+    // ----------------------------------------------------------------------------------------------
+
+    void newLevel()
+    {
+        // Create and link it to the editor
+        level = ScriptableObject.CreateInstance<Level>();
+        editor.Level = level;
+
+        loadLevel();
+    }
+
     void loadLevel()
     {
         if (level == null)
@@ -45,13 +59,19 @@ public class LevelEditorEditor : Editor
             return;
         }
 
-        Tilemap levelMap = level.Tilemap.GetComponent<Tilemap>();
-        TileBase[] allTiles = levelMap.GetTilesBlock(levelMap.cellBounds);
-
+        editor.ResetPieces();
         editor.Tilemap.ClearAllTiles();
-        editor.Tilemap.SetTilesBlock(levelMap.cellBounds, allTiles);
 
-        for (int i = 0; i < level.Pieces.Count; i++)
+        if (level.Tilemap != null)
+        {
+
+            Tilemap levelMap = level.Tilemap.GetComponent<Tilemap>();
+            TileBase[] allTiles = levelMap.GetTilesBlock(levelMap.cellBounds);
+
+            editor.Tilemap.SetTilesBlock(levelMap.cellBounds, allTiles);
+        }
+
+        for (int i = 0; i < level.PieceCount(); i++)
         {
             if (i > editor.Pieces.Count - 1)
             {
@@ -68,8 +88,7 @@ public class LevelEditorEditor : Editor
 
     void makeNewPiece()
     {
-        GameObject newTilemapObject = Instantiate(editor.PiecePrefab, Vector3.zero, Quaternion.identity, editor.TilemapParent);
-        editor.AddPiece(newTilemapObject);
+        editor.AddPiece();
     }
 
     void saveLevel()
@@ -91,14 +110,15 @@ public class LevelEditorEditor : Editor
             fillLevel();
             AssetDatabase.SaveAssets();
         }
-
-        Debug.Log(AssetDatabase.GetAssetPath(level));
     }
+
+    // ----------------------------------------------------------------------------------------------
 
     void fillLevel()
     {
         string path = getOrCreateFolderAt("NewLevelPrefabs");
-        level.Tilemap = createPrefab(editor.Tilemap.gameObject, path, "NewLevelTilemap");
+        bool overwrite = level.Tilemap != null;
+        level.Tilemap = createPrefab(editor.Tilemap.gameObject, path, "NewLevelTilemap", overwrite);
         List<MultiTile> pieces = convertPiecesToMultiTiles();
         level.Pieces = pieces;
     }
@@ -118,9 +138,19 @@ public class LevelEditorEditor : Editor
         return pieces;
     }
 
-    GameObject createPrefab(GameObject go, string path, string prefabName)
+    GameObject createPrefab(GameObject go, string path, string prefabName, bool overwrite)
     {
-        string prefabPath = AssetDatabase.GenerateUniqueAssetPath(path + "/" + prefabName + ".prefab");
+        string prefabPath = path + "/" + prefabName + ".prefab";
+
+        if (!overwrite)
+        {
+            prefabPath = AssetDatabase.GenerateUniqueAssetPath(prefabPath);
+        }
+        else
+        {
+            prefabPath = AssetDatabase.GetAssetPath(level.Tilemap);
+        }
+
         GameObject prefab = PrefabUtility.SaveAsPrefabAsset(go, prefabPath, out bool success);
 
         return success ? prefab : null;
