@@ -23,10 +23,11 @@ public class MultiTile : ScriptableObject
     }
 
     public List<OffsetTile> OffsetTiles = new List<OffsetTile>();
+    public Vector3Int EditorPosition;
 
     public Vector3Int[] Positions() => OffsetTiles.Select(tile => tile.Offset).ToArray();
-
     public GameTile[] Tiles() => OffsetTiles.Select(tile => tile.Tile).ToArray();
+
     public void AddTile(GameTile tile, Vector3Int position) => OffsetTiles.Add(new OffsetTile(tile, position));
 
     // Instead of making a tilemap, I changed this to set one instead. 
@@ -48,6 +49,13 @@ public class MultiTile : ScriptableObject
             // If we don't have a key or the key doesnt map to the same value then the tile is not equal
             if (!ourTiles.ContainsKey(position)) return false;
             if (ourTiles[position] != otherTiles[position]) return false;
+        }
+
+        foreach (Vector3Int position in ourTiles.Keys)
+        {
+            // If they don't have a key or the key doesnt map to the same value then the tile is not equal
+            if (!otherTiles.ContainsKey(position)) return false;
+            if (otherTiles[position] != ourTiles[position]) return false;
         }
 
         return true;

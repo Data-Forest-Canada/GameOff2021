@@ -48,6 +48,8 @@ public class LevelEditorEditor : Editor
         level = ScriptableObject.CreateInstance<Level>();
         editor.Level = level;
 
+        editor.ResetPieces();
+
         loadLevel();
     }
 
@@ -59,7 +61,6 @@ public class LevelEditorEditor : Editor
             return;
         }
 
-        editor.ResetPieces();
         editor.Tilemap.ClearAllTiles();
 
         if (level.Tilemap != null)
@@ -73,16 +74,16 @@ public class LevelEditorEditor : Editor
 
         for (int i = 0; i < level.PieceCount(); i++)
         {
-            if (i > editor.Pieces.Count - 1)
+            if (i >= editor.Pieces.Count)
             {
                 makeNewPiece();
             }
 
             Tilemap map = editor.Pieces[i].GetComponent<Tilemap>();
-            MultiTile tile = level.Pieces[i];
+            MultiTile multiTile = level.Pieces[i];
 
             map.ClearAllTiles();
-            tile.SetTilemap(map);
+            map.ApplyMultiTileAt(multiTile, multiTile.EditorPosition);
         }
     }
 
@@ -181,7 +182,6 @@ public class LevelEditorEditor : Editor
     {
         if (multiTileExistsInAssets(tile, out MultiTile existingTile))
         {
-            Debug.Log("Multitile already exists!");
             return existingTile;
         }
         else
@@ -197,17 +197,19 @@ public class LevelEditorEditor : Editor
 
     MultiTile convertTilemapToMultiTile(Tilemap map)
     {
-        MultiTile newMultiTile = ScriptableObject.CreateInstance<MultiTile>();
+        // Create a temporary multitile for the purpose of only collecting the tiles in the map as they are
+        MultiTile temp = ScriptableObject.CreateInstance<MultiTile>();
 
         map.CompressBounds();
 
         BoundsInt bounds = map.cellBounds;
 
+        // Hold onto the originals to reset at the end
+        TileBase[] original = map.GetTilesBlock(bounds);
 
-        Vector3Int pivot = Vector3Int.zero;
-        // Need to use two variables because Vector3Int is non-nullable;
         bool firstTileNotFound = true;
 
+        // Loop and take the piece as is, taking the first tile's position as the editor position
         for (int x = bounds.xMin; x <= bounds.xMax; x++)
         {
             for (int y = bounds.yMin; y <= bounds.yMax; y++)
@@ -219,16 +221,43 @@ public class LevelEditorEditor : Editor
                 {
                     if (firstTileNotFound)
                     {
+                        temp.EditorPosition = position;
                         firstTileNotFound = false;
-                        pivot = position;
                     }
 
-                    newMultiTile.AddTile(tileAt, position - pivot);
+                    temp.AddTile(tileAt, position);
                 }
             }
         }
 
-        return newMultiTile;
+        // Clear the map and then apply the temp tile at the origin
+        map.ClearAllTiles();
+        map.ApplyMultiTileAt(temp, Vector3Int.zero);
+
+        // This is to actually save the multitile
+        MultiTile final = ScriptableObject.CreateInstance<MultiTile>();
+
+        map.CompressBounds();
+        BoundsInt newBounds = map.cellBounds;
+        final.EditorPosition = temp.EditorPosition;
+
+        // Collect the tiles at their new positions
+        for (int x = newBounds.xMin; x <= newBounds.xMax; x++)
+        {
+            for (int y = newBounds.yMin; y <= newBounds.yMax; y++)
+            {
+                Vector3Int position = new Vector3Int(x, y, 0);
+                GameTile tileAt = (GameTile)map.GetTile(position);
+
+                if (tileAt != null) final.AddTile(tileAt, position);
+            }
+        }
+
+        // Reset the tiles
+        map.ClearAllTiles();
+        map.SetTilesBlock(bounds, original);
+
+        return final;
     }
 
     bool multiTileExistsInAssets(MultiTile givenTile, out MultiTile existingTile)

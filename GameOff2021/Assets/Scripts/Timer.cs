@@ -31,7 +31,6 @@ public class Timer
     Coroutine routine;
     MonoBehaviour behaviour;
 
-
     public Timer(MonoBehaviour boundBehaviour, float timerDuration, float tickRate = 0)
     {
         time = timerDuration;
@@ -58,7 +57,7 @@ public class Timer
 
     public void Restart()
     {
-        Stop();
+        Reset();
         Start();
     }
 
