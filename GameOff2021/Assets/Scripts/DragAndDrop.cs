@@ -13,6 +13,8 @@ public class DragAndDrop : MonoBehaviour
     Vector2 mousePosition;
     public Tilemap selected;
     Dictionary<Vector3Int, GameTile> original = new Dictionary<Vector3Int, GameTile>();
+    Timer ticker;
+    bool preview = false;
 
     bool active() => Input.GetMouseButton(0);
 
@@ -20,6 +22,9 @@ public class DragAndDrop : MonoBehaviour
     {
         pointerGrid = GetComponent<Grid>();
         levelTilemap.CompressBounds();
+        ticker = new Timer(this, 1);
+        ticker.OnTimerCompleted += TogglePreview;
+        ticker.Start();
     }
 
     private bool PickUp()
@@ -122,9 +127,18 @@ public class DragAndDrop : MonoBehaviour
         }
     }
 
+    private void TogglePreview()
+    {
+        if (!preview)
+            preview = true;
+        else
+            preview = false;
+
+        ticker.Restart();
+    }
+
     private void Update()
     {
-
         if(active() && selected == null)
         {
             if(PickUp())
@@ -136,11 +150,29 @@ public class DragAndDrop : MonoBehaviour
             List<Vector3Int> piecePositions;
             if (OnLevelMap(out piecePositions))
             {
-                Preview(piecePositions);
+                if (ticker.Paused)
+                {
+                    preview = true;
+                    ticker.Restart();
+                    ticker.Paused = false;
+                    
+                }
+
+                if (preview)
+                    Preview(piecePositions);
+                else
+                {
+                    foreach (Vector3Int pos in piecePositions)
+                    {
+                        selected.SetTile(pos, original[pos]);
+                    }
+                }
+
             }
             else
             {
-                foreach(Vector3Int pos in piecePositions)
+                ticker.Paused = true;
+                foreach (Vector3Int pos in piecePositions)
                 {
                     selected.SetTile(pos, original[pos]);
                 }
@@ -155,6 +187,7 @@ public class DragAndDrop : MonoBehaviour
 
         if(selected != null && !active())
         {
+            ticker.Paused = true;
             Release();
         }
 
