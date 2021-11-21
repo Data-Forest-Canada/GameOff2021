@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ using static UnityEngine.BoundsInt;
 [RequireComponent(typeof(Grid))]
 public class DragAndDrop : MonoBehaviour
 {
+    public static event Action OnLevelComplete;
+
     [SerializeField] GameObject pieceLayer;
     [SerializeField] Tilemap levelTilemap;
     Grid pointerGrid;
@@ -73,6 +76,18 @@ public class DragAndDrop : MonoBehaviour
         return true;
     }
 
+    private bool LevelComplete()
+    {
+        GameTile[] gameTiles = levelTilemap.GetAllGameTiles();
+        foreach(GameTile tile in gameTiles)
+        {
+            if (tile.Type != TileType.DRONE)
+                return false;
+        }
+
+        return true;
+    }
+
     private void Release()
     {
         List<Vector3Int> piecePositions;
@@ -95,6 +110,11 @@ public class DragAndDrop : MonoBehaviour
         }
         selected = null;
         original.Clear();
+        if(pieceLayer.transform.childCount == 0 && LevelComplete())
+        {
+            Debug.Log("Invoking OnLevelComplete event.");
+            OnLevelComplete?.Invoke();
+        }
     }
 
     private void Preview(List<Vector3Int> piecePositions)

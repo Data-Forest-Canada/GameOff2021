@@ -5,6 +5,21 @@ using UnityEngine.Tilemaps;
 
 public static class TilemapExtensions
 {
+    public static GameTile[] GetAllGameTiles(this Tilemap map)
+    {
+        BoundsInt.PositionEnumerator enu = map.cellBounds.allPositionsWithin;
+        List<GameTile> gameTiles = new List<GameTile>();
+        GameTile current;
+        while (enu.MoveNext())
+        {
+            current = map.GetTile<GameTile>(enu.Current);
+            if (current != null)
+                gameTiles.Add(current);
+        }
+
+        return gameTiles.ToArray();
+    }
+
     public static void ApplyMultiTileAt(this Tilemap map, MultiTile tile, Vector3Int position)
     {
         Vector3Int[] positions = tile.Positions();
