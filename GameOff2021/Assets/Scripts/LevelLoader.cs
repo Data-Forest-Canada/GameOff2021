@@ -11,6 +11,7 @@ public class LevelLoader : MonoBehaviour
     public Tilemap currentLevelLayer;
     public Tilemap pieceLayer;
     private static bool hasEventHandler = false;
+    public Level currentLevel;
 
     private void Start()
     {
@@ -23,15 +24,17 @@ public class LevelLoader : MonoBehaviour
     //copying a lot of this from LevelEditorEditor
     public void LoadLevel()
     {
-        Level toLoad = levels[0];
+        currentLevel = levels[0];
         levels.RemoveAt(0);
         currentLevelLayer.ClearAllTiles();
-        Tilemap levelMap = toLoad.Tilemap.GetComponent<Tilemap>();
+        Tilemap levelMap = currentLevel.Tilemap.GetComponent<Tilemap>();
         TileBase[] alltiles = levelMap.GetTilesBlock(levelMap.cellBounds);
         currentLevelLayer.SetTilesBlock(levelMap.cellBounds, alltiles);
         List<Tilemap> pieces = new List<Tilemap>();
 
-        for (int i = 0; i < toLoad.PieceCount(); i++)
+        RemoveAllPieces();
+
+        for (int i = 0; i < currentLevel.PieceCount(); i++)
         {
             pieces.Add(Instantiate(pieceLayer, Vector3.zero, Quaternion.identity));
         }
@@ -39,7 +42,40 @@ public class LevelLoader : MonoBehaviour
         for(int i = 0; i < pieces.Count; i++)
         {
             pieces[i].transform.SetParent(pieceLayer.transform);
-            pieces[i].ApplyMultiTileAt(toLoad.Pieces[i], toLoad.Pieces[i].EditorPosition);
+            pieces[i].ApplyMultiTileAt(currentLevel.Pieces[i], currentLevel.Pieces[i].EditorPosition);
+        }
+    }
+
+    private void RemoveAllPieces()
+    {
+        List<GameObject> toDestroy = new List<GameObject>();
+        foreach (Transform child in pieceLayer.transform)
+            toDestroy.Add(child.gameObject);
+
+        pieceLayer.transform.DetachChildren();
+        foreach (GameObject g in toDestroy)
+            Destroy(g);
+    }
+
+    public void ReloadLevel()
+    {
+        currentLevelLayer.ClearAllTiles();
+        Tilemap levelMap = currentLevel.Tilemap.GetComponent<Tilemap>();
+        TileBase[] alltiles = levelMap.GetTilesBlock(levelMap.cellBounds);
+        currentLevelLayer.SetTilesBlock(levelMap.cellBounds, alltiles);
+        List<Tilemap> pieces = new List<Tilemap>();
+
+        RemoveAllPieces();
+
+        for (int i = 0; i < currentLevel.PieceCount(); i++)
+        {
+            pieces.Add(Instantiate(pieceLayer, Vector3.zero, Quaternion.identity));
+        }
+
+        for (int i = 0; i < pieces.Count; i++)
+        {
+            pieces[i].transform.SetParent(pieceLayer.transform);
+            pieces[i].ApplyMultiTileAt(currentLevel.Pieces[i], currentLevel.Pieces[i].EditorPosition);
         }
     }
 }
