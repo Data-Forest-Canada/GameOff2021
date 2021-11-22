@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-[CreateAssetMenu(menuName = "GameTile")]
-public class GameTile : UnityEngine.Tilemaps.Tile
+[CreateAssetMenu(menuName = "GameTile/GameTile")]
+public class GameTile : Tile
 {
     [SerializeField] TileType type;
     public TileType Type
@@ -33,7 +33,7 @@ public class GameTile : UnityEngine.Tilemaps.Tile
     // Some tiles may have a unique effect upon being placed.
     // Providing a standard implementation of nothing happening (for convenience) as I believe that will be the majority of cases.
     // Unique OnPlace tiles should be derived from the base class (Unless we think of a way to modularly do that?)
-    public virtual void OnPlace(Grid grid, Vector3Int position)
+    public virtual void OnPlace(Tilemap map, Vector3Int position)
     {
         return;
     }

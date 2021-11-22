@@ -5,6 +5,33 @@ using UnityEngine.Tilemaps;
 
 public static class TilemapExtensions
 {
+    // Returns the surrounding tiles of a hex tilemap starting from the left in a clockwise pattern.
+    public static GameTile[] GetSurroundingGameTiles(this Tilemap map, Vector3Int position)
+    {
+        GameTile[] tiles = new GameTile[5];
+
+        tiles[0] = (GameTile)map.GetTile(position + Vector3Int.left);
+        tiles[1] = (GameTile)map.GetTile(position + Vector3Int.up);
+        tiles[2] = (GameTile)map.GetTile(position + Vector3Int.up + Vector3Int.right);
+        tiles[3] = (GameTile)map.GetTile(position + Vector3Int.right);
+        tiles[4] = (GameTile)map.GetTile(position + Vector3Int.down + Vector3Int.right);
+        tiles[5] = (GameTile)map.GetTile(position + Vector3Int.down);
+
+        return tiles;
+    }
+
+    public static void SetSurroundingGameTiles(this Tilemap map, Vector3Int position, GameTile[] tiles)
+    {
+        if (tiles.Length < 5) Debug.Log("tiles must be at least of length 5");
+
+        map.SetTile(position + Vector3Int.left, tiles[0]);
+        map.SetTile(position + Vector3Int.up, tiles[1]);
+        map.SetTile(position + Vector3Int.up + Vector3Int.right, tiles[2]);
+        map.SetTile(position + Vector3Int.right, tiles[3]);
+        map.SetTile(position + Vector3Int.down + Vector3Int.right, tiles[4]);
+        map.SetTile(position + Vector3Int.down, tiles[5]);
+    }
+
     public static GameTile[] GetAllGameTiles(this Tilemap map)
     {
         BoundsInt.PositionEnumerator enu = map.cellBounds.allPositionsWithin;
