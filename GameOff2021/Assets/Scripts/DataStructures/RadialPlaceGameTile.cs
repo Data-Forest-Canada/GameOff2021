@@ -13,10 +13,10 @@ public class RadialPlaceGameTile : GameTile
     public override void OnPlace(Tilemap map, Vector3Int position)
     {
         GameTile[] surroundingTiles = map.GetSurroundingGameTiles(position);
-        GameTile[] tilesToSet = new GameTile[5];
+        GameTile[] tilesToSet = new GameTile[6];
 
         // Looping through each tile and recipe, trying each recipe on each tile.
-        for (int i = 0; i <= surroundingTiles.Length; i++)
+        for (int i = 0; i < surroundingTiles.Length; i++)
         {
             // Set it to the current tile since the applying function would override.
             tilesToSet[i] = surroundingTiles[i];
@@ -32,5 +32,7 @@ public class RadialPlaceGameTile : GameTile
                 }
             }
         }
+
+        map.SetSurroundingGameTiles(position, tilesToSet);
     }
 }

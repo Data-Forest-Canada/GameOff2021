@@ -8,28 +8,27 @@ public static class TilemapExtensions
     // Returns the surrounding tiles of a hex tilemap starting from the left in a clockwise pattern.
     public static GameTile[] GetSurroundingGameTiles(this Tilemap map, Vector3Int position)
     {
-        GameTile[] tiles = new GameTile[5];
+        GameTile[] tiles = new GameTile[6];
+        Vector3Int[] surroundingPositions = getSurroundingPositions(position);
 
-        tiles[0] = (GameTile)map.GetTile(position + Vector3Int.left);
-        tiles[1] = (GameTile)map.GetTile(position + Vector3Int.up);
-        tiles[2] = (GameTile)map.GetTile(position + Vector3Int.up + Vector3Int.right);
-        tiles[3] = (GameTile)map.GetTile(position + Vector3Int.right);
-        tiles[4] = (GameTile)map.GetTile(position + Vector3Int.down + Vector3Int.right);
-        tiles[5] = (GameTile)map.GetTile(position + Vector3Int.down);
+        for (int i = 0; i < surroundingPositions.Length; i++)
+        {
+            tiles[i] = (GameTile)map.GetTile(surroundingPositions[i]);
+        }
 
         return tiles;
     }
 
     public static void SetSurroundingGameTiles(this Tilemap map, Vector3Int position, GameTile[] tiles)
     {
-        if (tiles.Length < 5) Debug.Log("tiles must be at least of length 5");
+        if (tiles.Length < 6) Debug.Log("tiles must be at least of length 6");
 
-        map.SetTile(position + Vector3Int.left, tiles[0]);
-        map.SetTile(position + Vector3Int.up, tiles[1]);
-        map.SetTile(position + Vector3Int.up + Vector3Int.right, tiles[2]);
-        map.SetTile(position + Vector3Int.right, tiles[3]);
-        map.SetTile(position + Vector3Int.down + Vector3Int.right, tiles[4]);
-        map.SetTile(position + Vector3Int.down, tiles[5]);
+        Vector3Int[] surroundingPositions = getSurroundingPositions(position);
+
+        for (int i = 0; i < surroundingPositions.Length; i++)
+        {
+            map.SetTile(surroundingPositions[i], tiles[i]);
+        }
     }
 
     public static GameTile[] GetAllGameTiles(this Tilemap map)
@@ -88,5 +87,33 @@ public static class TilemapExtensions
         }
 
         map.SetTiles(positions, tile.Tiles());
+    }
+
+    static Vector3Int[] getSurroundingPositions(Vector3Int position)
+    {
+        bool oddY = (position.y % 2 == 1);
+
+        Vector3Int[] surroundingPositions = new Vector3Int[6];
+
+        if (oddY)
+        {
+            surroundingPositions[0] = position + Vector3Int.left;
+            surroundingPositions[1] = position + Vector3Int.up;
+            surroundingPositions[2] = position + Vector3Int.up + Vector3Int.right;
+            surroundingPositions[3] = position + Vector3Int.right;
+            surroundingPositions[4] = position + Vector3Int.down + Vector3Int.left;
+            surroundingPositions[5] = position + Vector3Int.down;
+        }
+        else
+        {
+            surroundingPositions[0] = position + Vector3Int.left;
+            surroundingPositions[1] = position + Vector3Int.left + Vector3Int.up;
+            surroundingPositions[2] = position + Vector3Int.up;
+            surroundingPositions[3] = position + Vector3Int.right;
+            surroundingPositions[4] = position + Vector3Int.down;
+            surroundingPositions[5] = position + Vector3Int.down + Vector3Int.left;
+        }
+
+        return surroundingPositions;
     }
 }

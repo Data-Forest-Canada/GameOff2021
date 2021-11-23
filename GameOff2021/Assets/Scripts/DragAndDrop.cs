@@ -67,7 +67,7 @@ public class DragAndDrop : MonoBehaviour
         }
 
         Vector3Int levelPos;
-        foreach(Vector3Int pos in piecePositions)
+        foreach (Vector3Int pos in piecePositions)
         {
             levelPos = levelTilemap.WorldToCell(selected.CellToWorld(pos));
             if (!levelTilemap.HasTile(levelPos))
@@ -79,7 +79,7 @@ public class DragAndDrop : MonoBehaviour
     private bool LevelComplete()
     {
         GameTile[] gameTiles = levelTilemap.GetAllGameTiles();
-        foreach(GameTile tile in gameTiles)
+        foreach (GameTile tile in gameTiles)
         {
             if (tile.Type != TileType.DRONE)
                 return false;
@@ -95,12 +95,13 @@ public class DragAndDrop : MonoBehaviour
         {
             Vector3Int levelPos;
             GameTile current, newTile;
-            foreach(Vector3Int pos in piecePositions)
+            foreach (Vector3Int pos in piecePositions)
             {
                 levelPos = levelTilemap.WorldToCell(selected.CellToWorld(pos));
                 current = levelTilemap.GetTile<GameTile>(levelPos);
                 newTile = current.CombineWith(original[pos]);
                 levelTilemap.SetTile(levelPos, newTile ?? current);
+                newTile?.OnPlace(levelTilemap, levelPos);
             }
             Destroy(selected.gameObject);
         }
@@ -110,7 +111,7 @@ public class DragAndDrop : MonoBehaviour
         }
         selected = null;
         original.Clear();
-        if(pieceLayer.transform.childCount == 0 && LevelComplete())
+        if (pieceLayer.transform.childCount == 0 && LevelComplete())
         {
             Debug.Log("Invoking OnLevelComplete event.");
             OnLevelComplete?.Invoke();
@@ -143,7 +144,7 @@ public class DragAndDrop : MonoBehaviour
                 original.Add(pieceEnu.Current, selected.GetTile<GameTile>(pieceEnu.Current));
                 //Debug.Log(pieceEnu.Current);
             }
-                
+
         }
     }
 
@@ -159,13 +160,13 @@ public class DragAndDrop : MonoBehaviour
 
     private void Update()
     {
-        if(active() && selected == null)
+        if (active() && selected == null)
         {
-            if(PickUp())
+            if (PickUp())
                 StoreOriginals();
         }
 
-        if(active() && selected != null)
+        if (active() && selected != null)
         {
             List<Vector3Int> piecePositions;
             if (OnLevelMap(out piecePositions))
@@ -175,7 +176,7 @@ public class DragAndDrop : MonoBehaviour
                     preview = true;
                     ticker.Restart();
                     ticker.Paused = false;
-                    
+
                 }
 
                 if (preview)
@@ -202,10 +203,10 @@ public class DragAndDrop : MonoBehaviour
                 //    selected.SetTile(enu.Current.Key, enu.Current.Value);
                 //}
             }
-            
+
         }
 
-        if(selected != null && !active())
+        if (selected != null && !active())
         {
             ticker.Paused = true;
             Release();

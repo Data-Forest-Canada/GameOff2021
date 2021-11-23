@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51738736c159b0b448aeb8fbfe6145b6, type: 3}
   m_Name: PurpleHoneyLarva
   m_EditorClassIdentifier: 
-  input: {fileID: 0}
-  outPut: {fileID: 0}
+  input: {fileID: 11400000, guid: 4eb82ef683efcee46880bfa7ba8928ad, type: 2}
+  outPut: {fileID: 11400000, guid: cb4fbd86bdbcd6545beaf489ed47ff31, type: 2}

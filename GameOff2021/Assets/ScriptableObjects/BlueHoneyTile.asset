@@ -35,4 +35,5 @@ MonoBehaviour:
   m_Flags: 1
   m_ColliderType: 1
   type: 0
-  recipes: []
+  recipes:
+  - {fileID: 11400000, guid: cf80c90cb4d239144a349592812b6a3d, type: 2}

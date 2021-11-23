@@ -34,6 +34,7 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
-  type: 0
+  type: 3
   recipes: []
-  recipesToApply: []
+  recipesToApply:
+  - {fileID: 11400000, guid: de8a81c08db5d4e49a924434b3ecda31, type: 2}

@@ -10,6 +10,8 @@ public class TileRecipe : ScriptableObject
 
     public bool CanCombine(GameTile tile)
     {
+        if (tile == null) return false;
+        if (input == null) return true;
         return tile.Type == input.Type;
     }
 

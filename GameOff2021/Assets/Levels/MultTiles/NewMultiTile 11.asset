@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51738736c159b0b448aeb8fbfe6145b6, type: 3}
-  m_Name: RedHoneyLarva
+  m_Script: {fileID: 11500000, guid: 0f6c5b47454aaa24ebd5d98f3efb2c9d, type: 3}
+  m_Name: NewMultiTile 11
   m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: 4eb82ef683efcee46880bfa7ba8928ad, type: 2}
-  outPut: {fileID: 11400000, guid: 627d822a2849c344a8460ae87803f027, type: 2}
+  OffsetTiles: []
+  EditorPosition: {x: 0, y: 0, z: 0}
