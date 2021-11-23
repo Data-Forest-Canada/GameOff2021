@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e927c103dfd6da4ba180a3cf0fc0663, type: 3}
   m_Name: LarvaTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: c136b897ac1d4354d9d429a82008eac4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a26464a569434e64c9ada61e180c2103, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

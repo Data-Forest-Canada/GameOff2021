@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51738736c159b0b448aeb8fbfe6145b6, type: 3}
-  m_Name: RedPollenHoney
+  m_Name: HoneyRedPollen
   m_EditorClassIdentifier: 
   input: {fileID: 0}
   outPut: {fileID: 0}

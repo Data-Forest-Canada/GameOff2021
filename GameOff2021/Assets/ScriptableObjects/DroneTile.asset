@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e927c103dfd6da4ba180a3cf0fc0663, type: 3}
   m_Name: DroneTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: e092fb13e90f4d24cb10259dc6fcc67a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca8bd0a7e5a50d148ac6d5b8b763328e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
