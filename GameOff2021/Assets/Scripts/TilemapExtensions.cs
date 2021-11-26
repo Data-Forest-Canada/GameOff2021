@@ -55,8 +55,8 @@ public static class TilemapExtensions
 
         Vector3Int delta = position - positions[0];
 
-        bool originIsOdd = positions[0].y % 2 == 1;
-        bool givenIsOdd = position.y % 2 == 1;
+        bool originIsOdd = Mathf.Abs(positions[0].y % 2) == 1;
+        bool givenIsOdd = Mathf.Abs(position.y % 2) == 1;
 
         bool correctionNeeded = originIsOdd != givenIsOdd;
 
@@ -95,21 +95,22 @@ public static class TilemapExtensions
 
         Vector3Int[] surroundingPositions = new Vector3Int[6];
 
+        // Same for each
+        surroundingPositions[0] = position + Vector3Int.left;
+        surroundingPositions[3] = position + Vector3Int.right;
+
+        // Individual case positions
         if (oddY)
         {
-            surroundingPositions[0] = position + Vector3Int.left;
             surroundingPositions[1] = position + Vector3Int.up;
             surroundingPositions[2] = position + Vector3Int.up + Vector3Int.right;
-            surroundingPositions[3] = position + Vector3Int.right;
             surroundingPositions[4] = position + Vector3Int.down + Vector3Int.left;
             surroundingPositions[5] = position + Vector3Int.down;
         }
         else
         {
-            surroundingPositions[0] = position + Vector3Int.left;
-            surroundingPositions[1] = position + Vector3Int.left + Vector3Int.up;
+            surroundingPositions[1] = position + Vector3Int.up + Vector3Int.left;
             surroundingPositions[2] = position + Vector3Int.up;
-            surroundingPositions[3] = position + Vector3Int.right;
             surroundingPositions[4] = position + Vector3Int.down;
             surroundingPositions[5] = position + Vector3Int.down + Vector3Int.left;
         }

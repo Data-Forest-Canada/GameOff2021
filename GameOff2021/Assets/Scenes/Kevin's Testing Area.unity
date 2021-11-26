@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 209866385966686684, guid: 9bd23617bf6de8b429ab6b36bb17d94e, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 209866385966686684, guid: 9bd23617bf6de8b429ab6b36bb17d94e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -690,6 +690,11 @@ Tilemap:
   m_CorrespondingSourceObject: {fileID: 743593470002224393, guid: a6594f5e56849fe439797a368fd7ce39, type: 3}
   m_PrefabInstance: {fileID: 794044042}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &935531760 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 743593470002224407, guid: a6594f5e56849fe439797a368fd7ce39, type: 3}
+  m_PrefabInstance: {fileID: 794044042}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1302641012
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,7 +897,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1473370970 stripped
 GameObject:
@@ -912,6 +917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 743416706}
+  debug: 0
 --- !u!114 &1473370972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,12 +931,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
+  - {fileID: 11400000, guid: a52dbafae79eaa24dab10c14d7ed6509, type: 2}
   - {fileID: 11400000, guid: d422b83a5f1a26d4495249950d4d291a, type: 2}
-  - {fileID: 11400000, guid: 2d06cac5436b06b46aa96786857b491d, type: 2}
   CompletedLevelLayers: []
   currentLevelLayer: {fileID: 608191400}
   pieceLayer: {fileID: 935531759}
-  currentLevel: {fileID: 0}
+  currentLevelIndex: 0
+--- !u!114 &1473370973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473370970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a561bfe03d028e4997b9011bc240c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  piecePrefab: {fileID: 743593470002224404, guid: a6594f5e56849fe439797a368fd7ce39, type: 3}
+  piecesParent: {fileID: 935531760}
 --- !u!1 &1482621327
 GameObject:
   m_ObjectHideFlags: 0

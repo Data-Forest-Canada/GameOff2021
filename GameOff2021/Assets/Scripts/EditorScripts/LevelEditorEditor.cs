@@ -225,7 +225,6 @@ public class LevelEditorEditor : Editor
                         temp.EditorPosition = position;
                         firstTileNotFound = false;
                     }
-
                     temp.AddTile(tileAt, position);
                 }
             }
@@ -250,7 +249,10 @@ public class LevelEditorEditor : Editor
                 Vector3Int position = new Vector3Int(x, y, 0);
                 GameTile tileAt = (GameTile)map.GetTile(position);
 
-                if (tileAt != null) final.AddTile(tileAt, position);
+                if (tileAt != null)
+                {
+                    final.AddTile(tileAt, position);
+                }
             }
         }
 

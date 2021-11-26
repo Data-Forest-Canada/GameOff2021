@@ -6,6 +6,7 @@ using UnityEngine;
 public class MousePositionToCellPosition : MonoBehaviour
 {
     [SerializeField] Camera cam;
+    [SerializeField] bool debug;
     Grid grid;
     public static Vector3Int CellHovered;
 
@@ -20,6 +21,12 @@ public class MousePositionToCellPosition : MonoBehaviour
     void Update()
     {
         CellHovered = GetCellAtMousePosition();
+
+    }
+
+    private void FixedUpdate()
+    {
+        if (debug) Debug.Log(CellHovered);
     }
 
     Vector3Int GetCellAtMousePosition()

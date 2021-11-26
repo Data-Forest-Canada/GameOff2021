@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f6c5b47454aaa24ebd5d98f3efb2c9d, type: 3}
-  m_Name: NewMultiTile 11
+  m_Name: NewMultiTile 19
   m_EditorClassIdentifier: 
   OffsetTiles:
   - Offset: {x: 0, y: 0, z: 0}
+    Tile: {fileID: 11400000, guid: 5092abed3a98b254fbdbcadbb6503246, type: 2}
+  - Offset: {x: 0, y: 1, z: 0}
     Tile: {fileID: 11400000, guid: 4eb82ef683efcee46880bfa7ba8928ad, type: 2}
-  - Offset: {x: 1, y: 0, z: 0}
-    Tile: {fileID: 11400000, guid: f1d3c8543b8569541a0c72b382d4ff88, type: 2}
-  - Offset: {x: 2, y: 0, z: 0}
-    Tile: {fileID: 11400000, guid: 4eb82ef683efcee46880bfa7ba8928ad, type: 2}
-  EditorPosition: {x: -1, y: 0, z: 0}
+  EditorPosition: {x: -1, y: -1, z: 0}
