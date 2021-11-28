@@ -7,20 +7,16 @@ using UnityEngine.Tilemaps;
 public class GetPieceGameTile : GameTile
 {
     [SerializeField] MultiTile tileToGet;
-    [SerializeField] MultiTile[] bucketTiles;
     [SerializeField] bool useBucket;
+    [SerializeField] MultiTile[] bucketTiles;
 
     Bucket<MultiTile> bucket;
-
-    private void Awake()
-    {
-        bucket = new Bucket<MultiTile>(bucketTiles);
-    }
 
     public override void OnPlace(Tilemap map, Vector3Int position)
     {
         if (useBucket)
         {
+            if (bucket == null) bucket = new Bucket<MultiTile>(bucketTiles);
             PiecesManager.Instance.AddPiece(bucket.GetNextItem(), Vector3.zero);
         }
         else

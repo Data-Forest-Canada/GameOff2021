@@ -45,6 +45,7 @@ public class Bucket<T>
     // Easy initalize from an array
     void fillFromArray(T[] items)
     {
+        if (items == null) return;
         bucketItems = new List<T>();
         index = 0;
 

@@ -8,4 +8,7 @@ public enum TileType
     LARVA,
     HONEY,
     DRONE,
+    REDPOLLEN,
+    BLUEPOLLEN,
+    PURPLEPOLLEN
 }

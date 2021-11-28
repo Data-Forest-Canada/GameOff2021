@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51738736c159b0b448aeb8fbfe6145b6, type: 3}
   m_Name: HoneyRedPollen
   m_EditorClassIdentifier: 
-  input: {fileID: 0}
-  outPut: {fileID: 0}
+  input: {fileID: 11400000, guid: 7619f188eb669f54cb31e6dac49dfd07, type: 2}
+  outPut: {fileID: 11400000, guid: fee9bbacc0b003944b887246f5102c14, type: 2}
