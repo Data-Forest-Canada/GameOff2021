@@ -14,6 +14,8 @@ public class GetPieceGameTile : GameTile
 
     public override void OnPlace(Tilemap map, Vector3Int position)
     {
+        base.OnPlace(map, position);
+
         if (useBucket)
         {
             if (bucket == null) bucket = new Bucket<MultiTile>(bucketTiles);

@@ -12,6 +12,8 @@ public class RadialPlaceGameTile : GameTile
 
     public override void OnPlace(Tilemap map, Vector3Int position)
     {
+        base.OnPlace(map, position);
+
         GameTile[] surroundingTiles = map.GetSurroundingGameTiles(position);
         GameTile[] tilesToSet = new GameTile[6];
 

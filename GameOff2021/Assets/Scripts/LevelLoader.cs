@@ -6,22 +6,15 @@ using UnityEditor;
 
 public class LevelLoader : MonoBehaviour
 {
-    public List<Level> levels;
-    public List<Tilemap> CompletedLevelLayers;
+
     public Tilemap currentLevelLayer;
     public Tilemap pieceLayer;
-    private static bool hasEventHandler = false;
-    public int currentLevelIndex;
 
     private void Start()
     {
-        currentLevelIndex = 0;
-
         DragAndDrop.OnLevelComplete += LoadNextLevel;
-        hasEventHandler = true;
-        CompletedLevelLayers = new List<Tilemap>();
 
-        LoadLevel(levels[currentLevelIndex]);
+        LoadLevel(GameManager.Instance.CurrentLevel);
     }
 
     //copying a lot of this from LevelEditorEditor
@@ -38,13 +31,12 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        currentLevelIndex++;
-        LoadLevel(levels[currentLevelIndex]);
+        LoadLevel(GameManager.Instance.NextUnlockedLevel);
     }
 
     public void ReloadLevel()
     {
-        LoadLevel(levels[currentLevelIndex]);
+        LoadLevel(GameManager.Instance.CurrentLevel);
     }
 
     void setPiecesFromLevel(Level level)

@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-
+    [SerializeField] float sceneChangeDelay = 0;
     public static GameManager Instance;
     public Level[] Levels;
     public Level NextUnlockedLevel => getNextUnlockedLevel();
@@ -18,8 +19,10 @@ public class GameManager : MonoBehaviour
             if (value < 0 || value >= Levels.Length) currentLevelIndex = value;
         }
     }
-    int currentLevelIndex;
 
+    public UnityEvent OnSceneChanged;
+
+    int currentLevelIndex;
     Dictionary<Level, bool> levelUnlockedStatus;
 
     private void Awake()
@@ -43,6 +46,12 @@ public class GameManager : MonoBehaviour
         levelUnlockedStatus[level] = true;
     }
 
+    public void UnlockNextLevel()
+    {
+        CurrentLevelIndex++;
+        UnlockLevel(Levels[CurrentLevelIndex]);
+    }
+
     public bool IsLevelUnlocked(Level level)
     {
         if (!levelUnlockedStatus.ContainsKey(level)) return false;
@@ -58,7 +67,23 @@ public class GameManager : MonoBehaviour
 
     public void MoveToGameScene()
     {
-        SceneManager.LoadScene("GameScene");
+        AsyncOperation sceneLoading = SceneManager.LoadSceneAsync("GameScene");
+        sceneLoading.allowSceneActivation = false;
+        StartCoroutine(coWaitForLoading(sceneLoading));
+    }
+
+    IEnumerator coWaitForLoading(AsyncOperation loadingOperation)
+    {
+        Timer timer = new Timer(this, sceneChangeDelay);
+        timer.Start();
+
+        while (!(loadingOperation.progress >= 0.9f) || !timer.IsCompleted)
+        {
+            yield return null;
+        }
+
+        loadingOperation.allowSceneActivation = true;
+        OnSceneChanged?.Invoke();
     }
 
     // Fill the dictionary, only unlocking the first level
