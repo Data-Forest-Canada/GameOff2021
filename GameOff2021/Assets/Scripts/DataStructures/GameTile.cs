@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+
 [CreateAssetMenu(menuName = "GameTile/GameTile")]
-public class GameTile : Tile
+public class GameTile : AnimatedTile
 {
     [SerializeField] TileType type;
     public TileType Type

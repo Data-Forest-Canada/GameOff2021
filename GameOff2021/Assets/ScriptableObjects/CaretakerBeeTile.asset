@@ -12,28 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d330c60458078c48ac10959bb5a1bc5, type: 3}
   m_Name: CaretakerBeeTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: d771e7540a7267b49a87cb63f752ef5b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Transform:
-    e00: 1
-    e01: 0
-    e02: 0
-    e03: 0
-    e10: 0
-    e11: 1
-    e12: 0
-    e13: 0
-    e20: 0
-    e21: 0
-    e22: 1
-    e23: 0
-    e30: 0
-    e31: 0
-    e32: 0
-    e33: 1
-  m_InstancedGameObject: {fileID: 0}
-  m_Flags: 1
-  m_ColliderType: 1
+  m_AnimatedSprites:
+  - {fileID: 21300000, guid: 0a0488cae3c3b6a488146c929591de68, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
   type: 3
   recipes: []
   recipesToApply:
