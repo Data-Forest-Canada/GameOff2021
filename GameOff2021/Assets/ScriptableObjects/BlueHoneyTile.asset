@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BlueHoneyTile
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: 21300000, guid: b1b6f9e33b1798e48bf08502d8b3eb83, type: 3}
+  - {fileID: 21300000, guid: 67da580922ca7bb47817838fa897c024, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
   m_AnimationStartTime: 0

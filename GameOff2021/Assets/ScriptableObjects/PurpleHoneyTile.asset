@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PurpleHoneyTile
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: 21300000, guid: d538dfebd4b3f0c4492edd46d79679c1, type: 3}
+  - {fileID: 21300000, guid: 4c6cdb0dad6fff9489bd5712ecb733b0, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
   m_AnimationStartTime: 0

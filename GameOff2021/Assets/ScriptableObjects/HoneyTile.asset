@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HoneyTile
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: 21300000, guid: c56935a51d0c0184484686ee14d3f268, type: 3}
+  - {fileID: 21300000, guid: 86f4b90b3ca6f0f4b8b2e8b074822cb1, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
   m_AnimationStartTime: 0
