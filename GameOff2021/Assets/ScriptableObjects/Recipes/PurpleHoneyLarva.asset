@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PurpleHoneyLarva
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: 4eb82ef683efcee46880bfa7ba8928ad, type: 2}
-  outPut: {fileID: 11400000, guid: cb4fbd86bdbcd6545beaf489ed47ff31, type: 2}
+  outPut: {fileID: 11400000, guid: c1c5f5f4468384a41930e439f4b834f1, type: 2}
