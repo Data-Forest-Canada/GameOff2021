@@ -144,7 +144,6 @@ public class DragAndDrop : MonoBehaviour
         // Previously this was checking to see if you used all your pieces. I don't think we want that to be a condition of winning so I removed it
         if (LevelComplete())
         {
-            Debug.Log("Invoking OnLevelComplete event.");
             GameManager.Instance.UnlockNextLevel();
             OnLevelComplete?.Invoke();
         }
