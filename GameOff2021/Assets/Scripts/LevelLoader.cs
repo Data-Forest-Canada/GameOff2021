@@ -50,7 +50,8 @@ public class LevelLoader : MonoBehaviour
 
         foreach (MultiTile tile in level.Pieces)
         {
-            PiecesManager.Instance.AddPiece(tile, Vector3.zero);
+            PiecesManager.Instance.AddPiece(tile, tile.EditorPosition);
+            //PiecesManager.Instance.AddPiece(tile, Vector3.zero);
         }
     }
 }
