@@ -10,17 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e927c103dfd6da4ba180a3cf0fc0663, type: 3}
-  m_Name: BluePollenTile
+  m_Name: RedPollenTile
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: 21300000, guid: 4632f723350217e4d8e4fa3c3ebb9bed, type: 3}
-  - {fileID: 21300000, guid: 01130732b0d1fd44eab0f6dd0ecea19e, type: 3}
-  - {fileID: 21300000, guid: a03f6e129660c1747958f3ef3f3c6d89, type: 3}
-  - {fileID: 21300000, guid: 01130732b0d1fd44eab0f6dd0ecea19e, type: 3}
+  - {fileID: 21300000, guid: 1e0c66787fdc19848ab84b4d74b173d1, type: 3}
+  - {fileID: 21300000, guid: 2d249aa177bd9ec418562240a95b6df6, type: 3}
+  - {fileID: 21300000, guid: 10d7b8d0919a9c44db66789028da7098, type: 3}
+  - {fileID: 21300000, guid: 2d249aa177bd9ec418562240a95b6df6, type: 3}
   m_MinSpeed: 7
   m_MaxSpeed: 10
   m_AnimationStartTime: 0
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
-  type: 5
+  onPlaceClip: {fileID: 0}
+  type: 4
+  MatchingTile: {fileID: 11400000, guid: 1835fd2123feb4e4e889e62a7a7cfa7a, type: 2}
   recipes: []

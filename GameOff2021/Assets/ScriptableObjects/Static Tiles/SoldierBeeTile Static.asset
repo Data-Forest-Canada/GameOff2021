@@ -10,19 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d330c60458078c48ac10959bb5a1bc5, type: 3}
-  m_Name: SoldierBeeTile
+  m_Name: SoldierBeeTile Static
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
   - {fileID: 21300000, guid: 5d8297068f2b34a4981cd3648ae2f578, type: 3}
-  - {fileID: 21300000, guid: 31e284ab727e57647a210ce77dac406d, type: 3}
-  - {fileID: 21300000, guid: 54d8d193ed3b5e1479490a6033b3dfcc, type: 3}
-  - {fileID: 21300000, guid: 31e284ab727e57647a210ce77dac406d, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
   m_AnimationStartTime: 0
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
+  onPlaceClip: {fileID: 0}
   type: 3
+  MatchingTile: {fileID: 11400000, guid: 627d822a2849c344a8460ae87803f027, type: 2}
   recipes: []
   recipesToApply:
   - {fileID: 11400000, guid: 6c2a17d43d19eea429115290fb574df8, type: 2}

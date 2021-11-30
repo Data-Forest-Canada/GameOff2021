@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e927c103dfd6da4ba180a3cf0fc0663, type: 3}
-  m_Name: RedPollenTile
+  m_Name: RedPollenTile Static
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
   - {fileID: 21300000, guid: 1e0c66787fdc19848ab84b4d74b173d1, type: 3}
-  - {fileID: 21300000, guid: 2d249aa177bd9ec418562240a95b6df6, type: 3}
-  - {fileID: 21300000, guid: 10d7b8d0919a9c44db66789028da7098, type: 3}
-  - {fileID: 21300000, guid: 2d249aa177bd9ec418562240a95b6df6, type: 3}
   m_MinSpeed: 7
   m_MaxSpeed: 10
   m_AnimationStartTime: 0
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
+  onPlaceClip: {fileID: 0}
   type: 4
+  MatchingTile: {fileID: 11400000, guid: 7619f188eb669f54cb31e6dac49dfd07, type: 2}
   recipes: []
