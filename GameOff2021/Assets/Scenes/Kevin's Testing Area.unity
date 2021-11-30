@@ -685,11 +685,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 743593470002224404, guid: a6594f5e56849fe439797a368fd7ce39, type: 3}
   m_PrefabInstance: {fileID: 794044042}
   m_PrefabAsset: {fileID: 0}
---- !u!1839735485 &935531759 stripped
-Tilemap:
-  m_CorrespondingSourceObject: {fileID: 743593470002224393, guid: a6594f5e56849fe439797a368fd7ce39, type: 3}
-  m_PrefabInstance: {fileID: 794044042}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &935531760 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 743593470002224407, guid: a6594f5e56849fe439797a368fd7ce39, type: 3}
@@ -930,13 +925,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92fc8141e9f40b647ac5da05c1a55a48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels:
-  - {fileID: 11400000, guid: 5c5faa3a260dbcf44a819b2f4b77c91c, type: 2}
-  - {fileID: 11400000, guid: d422b83a5f1a26d4495249950d4d291a, type: 2}
-  CompletedLevelLayers: []
-  currentLevelLayer: {fileID: 608191400}
-  pieceLayer: {fileID: 935531759}
-  currentLevelIndex: 0
+  levelLayer: {fileID: 608191400}
+  debugLevel: {fileID: 11400000, guid: 5c5faa3a260dbcf44a819b2f4b77c91c, type: 2}
+  debug: 1
 --- !u!114 &1473370973
 MonoBehaviour:
   m_ObjectHideFlags: 0

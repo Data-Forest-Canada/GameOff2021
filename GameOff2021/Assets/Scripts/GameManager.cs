@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         get { return currentLevelIndex; }
         set
         {
-            if (value < 0 || value >= Levels.Length) currentLevelIndex = value;
+            if (value >= 0 || value < Levels.Length) currentLevelIndex = value;
         }
     }
 
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
 
         foreach (Level level in Levels)
         {
-            if (!levelUnlockedStatus[level]) break;
+            if (!IsLevelUnlocked(level)) break;
 
             nextLevel = level;
         }

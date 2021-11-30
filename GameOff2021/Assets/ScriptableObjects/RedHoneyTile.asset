@@ -19,6 +19,8 @@ MonoBehaviour:
   m_AnimationStartTime: 0
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
+  onPlaceClip: {fileID: 0}
   type: 0
+  MatchingTile: {fileID: 11400000}
   recipes:
   - {fileID: 11400000, guid: 296e576a225bd444e8ff9b225d2382b2, type: 2}

@@ -60,6 +60,11 @@ public class MusicManager : MonoBehaviour
         fadeToNewSong(inGameMusic[currentInGameSongIndex], fadeDuration);
     }
 
+    public void ToggleMute()
+    {
+        source.mute = !source.mute;
+    }
+
     void fadeToNewSong(AudioClip newSong, float fadeDuration)
     {
         StartCoroutine(coFadeBetweenSongs(newSong, fadeDuration));

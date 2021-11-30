@@ -2,29 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEditor;
 
 public class LevelLoader : MonoBehaviour
 {
 
-    public Tilemap currentLevelLayer;
-    public Tilemap pieceLayer;
+    [SerializeField] Tilemap levelLayer;
+    [SerializeField] Level debugLevel;
+    [SerializeField] bool debug;
 
     private void Start()
     {
-        DragAndDrop.OnLevelComplete += LoadNextLevel;
 
-        LoadLevel(GameManager.Instance.CurrentLevel);
+        if (debug)
+        {
+            LoadLevel(debugLevel);
+        }
+        else
+        {
+            LoadLevel(GameManager.Instance.CurrentLevel);
+        }
     }
 
     //copying a lot of this from LevelEditorEditor
     public void LoadLevel(Level level)
     {
-        currentLevelLayer.ClearAllTiles();
         Tilemap levelMap = level.Tilemap.GetComponent<Tilemap>();
+        levelLayer.ClearAllTiles();
         TileBase[] alltiles = levelMap.GetTilesBlock(levelMap.cellBounds);
-        currentLevelLayer.SetTilesBlock(levelMap.cellBounds, alltiles);
-        List<Tilemap> pieces = new List<Tilemap>();
+        levelLayer.SetTilesBlock(levelMap.cellBounds, alltiles);
 
         setPiecesFromLevel(level);
     }

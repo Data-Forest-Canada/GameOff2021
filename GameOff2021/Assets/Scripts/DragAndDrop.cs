@@ -4,17 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using static UnityEngine.BoundsInt;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Grid))]
 public class DragAndDrop : MonoBehaviour
 {
-    public static event Action OnLevelComplete;
 
     [SerializeField] GameObject pieceLayer;
     [SerializeField] Tilemap levelTilemap;
     Grid pointerGrid;
     Vector2 mousePosition;
     public Tilemap selected;
+    public UnityEvent OnLevelComplete;
     Dictionary<Vector3Int, GameTile> original = new Dictionary<Vector3Int, GameTile>();
     Timer ticker;
     Vector3 originalPosition;
@@ -108,26 +109,30 @@ public class DragAndDrop : MonoBehaviour
                 //get the tile from the level that matches the current tile position
                 current = levelTilemap.GetTile<GameTile>(levelPos);
 
-                //store the previous tile as a transaction
-                transaction.Add(levelPos, current);
 
                 //get the combined tile 
                 newTile = current.CombineWith(original[pos]);
 
-                if(newTile == null)
-                {
-                    foreach(KeyValuePair<Vector3Int, GameTile> entry in transaction)
-                        levelTilemap.SetTile(entry.Key, entry.Value);
+                //store the new tile as a transaction
+                transaction.Add(levelPos, newTile);
 
+                // If we hit a null tile we can just abort. We reset the piece positionm before we go
+                if (newTile == null)
+                {
                     selected.transform.SetParent(pieceLayer.transform);
                     selected.transform.position = originalPosition;
 
                     return;
                 }
-
-                levelTilemap.SetTile(levelPos, newTile ?? current);
-                newTile?.OnPlace(levelTilemap, levelPos);
             }
+
+            // Only apply once we have a full list with no nulls
+            foreach (KeyValuePair<Vector3Int, GameTile> entry in transaction)
+            {
+                levelTilemap.SetTile(entry.Key, entry.Value);
+                entry.Value.OnPlace(levelTilemap, entry.Key);
+            }
+
             Destroy(selected.gameObject);
         }
         else

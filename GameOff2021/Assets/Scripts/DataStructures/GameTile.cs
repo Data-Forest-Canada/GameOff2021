@@ -38,7 +38,15 @@ public class GameTile : AnimatedTile
     // Unique OnPlace tiles should be derived from the base class (Unless we think of a way to modularly do that?)
     public virtual void OnPlace(Tilemap map, Vector3Int position)
     {
-        MiscSoundsManager.Instance.PlayClip(onPlaceClip);
+        playOnPlaceClip();
         return;
+    }
+
+    void playOnPlaceClip()
+    {
+        if (onPlaceClip != null)
+        {
+            MiscSoundsManager.Instance.PlayClip(onPlaceClip);
+        }
     }
 }

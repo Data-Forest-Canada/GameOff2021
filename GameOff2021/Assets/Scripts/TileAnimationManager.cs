@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 [RequireComponent(typeof(Tilemap))]
 public class TileAnimationManager : MonoBehaviour
 {
-    public Tilemap map;
+    Tilemap map;
     Timer startTimer, stopTimer;
     Queue<Vector3Int> animatedPositions;
 
@@ -68,6 +68,6 @@ public class TileAnimationManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
