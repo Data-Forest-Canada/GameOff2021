@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 [CreateAssetMenu(menuName = "GameTile/GetPiece")]
 public class GetPieceGameTile : GameTile
 {
-    [SerializeField] MultiTile tileToGet;
+    [SerializeField] public MultiTile tileToGet;
     [SerializeField] bool useBucket;
     [SerializeField] MultiTile[] bucketTiles;
 

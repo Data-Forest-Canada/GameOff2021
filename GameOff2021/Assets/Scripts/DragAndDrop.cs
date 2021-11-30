@@ -119,8 +119,14 @@ public class DragAndDrop : MonoBehaviour
                 // If we hit a null tile we can just abort. We reset the piece positionm before we go
                 if (newTile == null)
                 {
+                    foreach(Vector3Int pos2 in piecePositions)
+                    {
+                        selected.SetTile(pos2, original[pos2]);
+                    }
                     selected.transform.SetParent(pieceLayer.transform);
                     selected.transform.position = originalPosition;
+
+                    
 
                     return;
                 }
@@ -161,6 +167,10 @@ public class DragAndDrop : MonoBehaviour
             newTile = current.CombineWith(original[pos]);
             //if(current.Type != TileType.NONE)
             //    Debug.Log($"{newTile}, {pos}");
+            if (newTile == null)
+                newTile = original[pos];
+            if (newTile is GetPieceGameTile)
+                newTile = ((GetPieceGameTile)newTile).tileToGet.Tiles()[0];
             selected.SetTile(pos, newTile ?? original[pos]);
 
         }
