@@ -17,6 +17,7 @@ public class DragAndDrop : MonoBehaviour
     public Tilemap selected;
     Dictionary<Vector3Int, GameTile> original = new Dictionary<Vector3Int, GameTile>();
     Timer ticker;
+    Vector3 originalPosition;
     bool preview = false;
 
     bool active() => Input.GetMouseButton(0);
@@ -36,14 +37,17 @@ public class DragAndDrop : MonoBehaviour
         GameTile tile;
         Vector3Int cellPos;
         int i = 0;
+
         foreach (Tilemap map in maps)
         {
             cellPos = map.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            cellPos = new Vector3Int(cellPos.x, cellPos.y, 0);
             cellPos = new Vector3Int(cellPos.x, cellPos.y, 0);
             //Debug.Log($"map {i}; {cellPos}");
             tile = map.GetTile<GameTile>(cellPos);
             if (tile != null)
             {
+                originalPosition = map.transform.position;
                 //Debug.Log(tile);
                 map.transform.SetParent(transform);
                 selected = map;
@@ -95,11 +99,32 @@ public class DragAndDrop : MonoBehaviour
         {
             Vector3Int levelPos;
             GameTile current, newTile;
+            Dictionary<Vector3Int, GameTile> transaction = new Dictionary<Vector3Int, GameTile>();
             foreach (Vector3Int pos in piecePositions)
             {
+                //match the current tile position to the level grid
                 levelPos = levelTilemap.WorldToCell(selected.CellToWorld(pos));
+
+                //get the tile from the level that matches the current tile position
                 current = levelTilemap.GetTile<GameTile>(levelPos);
+
+                //store the previous tile as a transaction
+                transaction.Add(levelPos, current);
+
+                //get the combined tile 
                 newTile = current.CombineWith(original[pos]);
+
+                if(newTile == null)
+                {
+                    foreach(KeyValuePair<Vector3Int, GameTile> entry in transaction)
+                        levelTilemap.SetTile(entry.Key, entry.Value);
+
+                    selected.transform.SetParent(pieceLayer.transform);
+                    selected.transform.position = originalPosition;
+
+                    return;
+                }
+
                 levelTilemap.SetTile(levelPos, newTile ?? current);
                 newTile?.OnPlace(levelTilemap, levelPos);
             }
@@ -133,6 +158,7 @@ public class DragAndDrop : MonoBehaviour
             //if(current.Type != TileType.NONE)
             //    Debug.Log($"{newTile}, {pos}");
             selected.SetTile(pos, newTile ?? original[pos]);
+
         }
     }
 

@@ -104,7 +104,7 @@ public static class TilemapExtensions
         {
             surroundingPositions[1] = position + Vector3Int.up;
             surroundingPositions[2] = position + Vector3Int.up + Vector3Int.right;
-            surroundingPositions[4] = position + Vector3Int.down + Vector3Int.left;
+            surroundingPositions[4] = position + Vector3Int.down + Vector3Int.right;
             surroundingPositions[5] = position + Vector3Int.down;
         }
         else

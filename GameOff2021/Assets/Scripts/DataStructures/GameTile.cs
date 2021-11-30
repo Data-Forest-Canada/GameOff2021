@@ -9,6 +9,7 @@ public class GameTile : AnimatedTile
 {
     [SerializeField] AudioClip onPlaceClip;
     [SerializeField] TileType type;
+    [SerializeField] public GameTile MatchingTile; //A tile with animations should match the same tile with no animations
     public TileType Type
     {
         get { return type; }
