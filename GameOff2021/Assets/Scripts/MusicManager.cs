@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 public class MusicManager : MonoBehaviour
@@ -13,6 +14,10 @@ public class MusicManager : MonoBehaviour
     [SerializeField] AudioClip[] inGameMusic;
 
     public static MusicManager Instance;
+    public Image musicControlIcon;
+    public Sprite mutedIcon;
+    public Sprite unmutedIcon;
+
     int currentInGameSongIndex;
     bool inGame = false;
     bool fading = false;
@@ -63,6 +68,11 @@ public class MusicManager : MonoBehaviour
     public void ToggleMute()
     {
         source.mute = !source.mute;
+
+        if (source.mute)
+            musicControlIcon.sprite = mutedIcon;
+        else
+            musicControlIcon.sprite = unmutedIcon;
     }
 
     void fadeToNewSong(AudioClip newSong, float fadeDuration)

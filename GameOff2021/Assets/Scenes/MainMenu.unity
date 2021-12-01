@@ -4949,6 +4949,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6741565020382275482, guid: 0eb0099bc8e72874bab60ac98615f8b0, type: 3}
+      propertyPath: muteIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 1b0a3968954de904e8907d8494b9ccc0, type: 3}
+    - target: {fileID: 6741565020382275482, guid: 0eb0099bc8e72874bab60ac98615f8b0, type: 3}
+      propertyPath: mutedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 1b0a3968954de904e8907d8494b9ccc0, type: 3}
+    - target: {fileID: 6741565020382275482, guid: 0eb0099bc8e72874bab60ac98615f8b0, type: 3}
+      propertyPath: unmuteIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: c5b4658bbb48aed4385f0a1f7f4d965f, type: 3}
+    - target: {fileID: 6741565020382275482, guid: 0eb0099bc8e72874bab60ac98615f8b0, type: 3}
+      propertyPath: unmutedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: c5b4658bbb48aed4385f0a1f7f4d965f, type: 3}
+    - target: {fileID: 6741565020382275482, guid: 0eb0099bc8e72874bab60ac98615f8b0, type: 3}
+      propertyPath: musicControlIcon
+      value: 
+      objectReference: {fileID: 861196661}
     - target: {fileID: 6741565020382275485, guid: 0eb0099bc8e72874bab60ac98615f8b0, type: 3}
       propertyPath: m_RootOrder
       value: 6
