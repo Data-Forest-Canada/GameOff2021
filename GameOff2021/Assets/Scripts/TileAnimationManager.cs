@@ -51,6 +51,8 @@ public class TileAnimationManager : MonoBehaviour
         Vector3Int posToStop = animatedPositions.Dequeue();
 
         GameTile tile = map.GetTile<GameTile>(posToStop);
+        // Just dodging an exception for launch
+        if (tile == null) return;
         map.SetTile(posToStop, tile.MatchingTile);
 
         if (animatedPositions.Count > 0)

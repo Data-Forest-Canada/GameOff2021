@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd4682a5d525eb4a8ca3548e1db071d, type: 3}
+  m_Name: B&R 2
+  m_EditorClassIdentifier: 
+  Tilemap: {fileID: 1964575672, guid: 3be119aac8ad6c242a2d21bc64219477, type: 3}
+  Pieces:
+  - {fileID: 11400000, guid: c1a8f61c666656b489a8beda29d35212, type: 2}
+  - {fileID: 11400000, guid: 61c7d07f20dc96847b0e688f4e9cc2ee, type: 2}
+  - {fileID: 11400000, guid: 1bd5a720f4e2dc945aea6558618e4e8f, type: 2}
+  - {fileID: 11400000, guid: 256778bd9f345b34fb9ab4330a1d20eb, type: 2}
+  - {fileID: 11400000, guid: ecc8e14e045dcc5449688d93a9462639, type: 2}
+  - {fileID: 11400000, guid: 83283ad44267d7845845d692ec8ad11d, type: 2}
