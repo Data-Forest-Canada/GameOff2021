@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcd4682a5d525eb4a8ca3548e1db071d, type: 3}
   m_Name: LevelK1
   m_EditorClassIdentifier: 
-  Tilemap: {fileID: 0}
-  Pieces: []
+  Tilemap: {fileID: 1964575672, guid: bd08a6376873d6f42aa5e6f4dce6b8ac, type: 3}
+  Pieces:
+  - {fileID: 11400000, guid: aa3084b722305ce47b16819de4f62fbd, type: 2}
+  - {fileID: 11400000, guid: 17c3118e42e888047ac23d7c74c1a06e, type: 2}
+  - {fileID: 11400000, guid: cc86728b27ee8564892b788510d9a6ee, type: 2}
+  - {fileID: 11400000, guid: d3d30314832d1d34f8cbf968a650c10b, type: 2}
+  - {fileID: 11400000, guid: d3d30314832d1d34f8cbf968a650c10b, type: 2}

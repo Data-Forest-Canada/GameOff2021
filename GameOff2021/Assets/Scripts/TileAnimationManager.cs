@@ -65,6 +65,20 @@ public class TileAnimationManager : MonoBehaviour
         startTimer.Start();
     }
 
+    public void LevelCompleteHandler()
+    {
+        BoundsInt.PositionEnumerator enu = map.cellBounds.allPositionsWithin;
+        GameTile tile;
+        while (enu.MoveNext())
+        {
+            tile = map.GetTile<GameTile>(enu.Current);
+            if(tile != null)
+            {
+                map.SetTile(enu.Current, tile.MatchingTile);
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

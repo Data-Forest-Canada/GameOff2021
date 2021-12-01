@@ -34,6 +34,13 @@ public class LevelLoader : MonoBehaviour
         setPiecesFromLevel(level);
     }
 
+    public void OnLevelCompleteHandler()
+    {
+        Timer timer = new Timer(this, 2);
+        timer.OnTimerCompleted += LoadNextLevel;
+        timer.Start();
+    }
+
     public void LoadNextLevel()
     {
         LoadLevel(GameManager.Instance.NextUnlockedLevel);
