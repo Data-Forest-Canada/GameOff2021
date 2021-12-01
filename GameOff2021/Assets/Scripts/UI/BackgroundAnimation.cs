@@ -198,8 +198,6 @@ public class BackgroundAnimation : MonoBehaviour
             //puzzlePiece.transform.position += puzzlePiece.transform.forward;
         }
 
-        UnityEngine.Debug.Log(puzzlePiece.transform.up);
-        UnityEngine.Debug.Log(movementSpeed);
         // MOVEMENT SPEED
         puzzlePiece.SetMovementVelocity(puzzlePiece.transform.up * movementSpeed);
 
