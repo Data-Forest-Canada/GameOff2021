@@ -1928,17 +1928,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6741565020382275485, guid: 0eb0099bc8e72874bab60ac98615f8b0, type: 3}
   m_PrefabInstance: {fileID: 6741565018632250985}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &994779338 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6569733974739357918, guid: c461ae3be087e9e43b5e4e0abb3133c8, type: 3}
-  m_PrefabInstance: {fileID: 6569733973821141012}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51ebbf57a70f6c540be955f4afd1f222, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &996144693 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3728138294641101239, guid: 43ea5db9a4defec489791f7b3d93be81, type: 3}
@@ -2319,6 +2308,7 @@ GameObject:
   - component: {fileID: 1160449190}
   - component: {fileID: 1160449189}
   - component: {fileID: 1160449192}
+  - component: {fileID: 1160449193}
   m_Layer: 5
   m_Name: Button - Start Game
   m_TagString: Untagged
@@ -2402,9 +2392,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 994779338}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: MoveToGameScene
+      - m_Target: {fileID: 1160449193}
+        m_TargetAssemblyTypeName: GameSceneButton, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2548,6 +2538,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1160449193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160449187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103c786f1b3d6674295e7b8316bb8205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1191405333 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3728138294641101239, guid: 43ea5db9a4defec489791f7b3d93be81, type: 3}
@@ -4856,22 +4858,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6569733974739357918, guid: c461ae3be087e9e43b5e4e0abb3133c8, type: 3}
       propertyPath: Levels.Array.size
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6569733974739357918, guid: c461ae3be087e9e43b5e4e0abb3133c8, type: 3}
       propertyPath: Levels.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 798c4fa1dd0135f40a406fe2acca2cfa, type: 2}
+      objectReference: {fileID: 11400000, guid: 6e5b2e9be23c48c45aca020637282eb9, type: 2}
     - target: {fileID: 6569733974739357918, guid: c461ae3be087e9e43b5e4e0abb3133c8, type: 3}
       propertyPath: Levels.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 12df38d22500b5b41843d1727b700bcc, type: 2}
+      objectReference: {fileID: 11400000, guid: 568bf098807d02d40a12637c8d73ab05, type: 2}
     - target: {fileID: 6569733974739357918, guid: c461ae3be087e9e43b5e4e0abb3133c8, type: 3}
       propertyPath: Levels.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 9e46b56cec4d13246ac3d4568126e2ff, type: 2}
+      objectReference: {fileID: 11400000, guid: 09a9fc1ff66af4b4b96930a3ef6fd9e2, type: 2}
     - target: {fileID: 6569733974739357918, guid: c461ae3be087e9e43b5e4e0abb3133c8, type: 3}
       propertyPath: Levels.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 798c4fa1dd0135f40a406fe2acca2cfa, type: 2}
+    - target: {fileID: 6569733974739357918, guid: c461ae3be087e9e43b5e4e0abb3133c8, type: 3}
+      propertyPath: Levels.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 12df38d22500b5b41843d1727b700bcc, type: 2}
+    - target: {fileID: 6569733974739357918, guid: c461ae3be087e9e43b5e4e0abb3133c8, type: 3}
+      propertyPath: Levels.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9e46b56cec4d13246ac3d4568126e2ff, type: 2}
+    - target: {fileID: 6569733974739357918, guid: c461ae3be087e9e43b5e4e0abb3133c8, type: 3}
+      propertyPath: Levels.Array.data[6]
       value: 
       objectReference: {fileID: 11400000, guid: 947098a44a6d32b4aba990bfc7d11192, type: 2}
     - target: {fileID: 6569733974739357918, guid: c461ae3be087e9e43b5e4e0abb3133c8, type: 3}

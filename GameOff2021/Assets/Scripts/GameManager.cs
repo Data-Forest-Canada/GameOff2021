@@ -48,6 +48,11 @@ public class GameManager : MonoBehaviour
 
     public void UnlockNextLevel()
     {
+        if (CurrentLevelIndex + 1 >= Levels.Length)
+        {
+            MoveToCreditsScene();
+            return;
+        }
         CurrentLevelIndex++;
         UnlockLevel(Levels[CurrentLevelIndex]);
     }

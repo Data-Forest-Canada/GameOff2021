@@ -1546,17 +1546,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956164750}
   m_CullTransparentMesh: 1
---- !u!114 &994779338 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6569733974739357918, guid: c461ae3be087e9e43b5e4e0abb3133c8, type: 3}
-  m_PrefabInstance: {fileID: 6569733973821141012}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51ebbf57a70f6c540be955f4afd1f222, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1154988075
 GameObject:
   m_ObjectHideFlags: 0
@@ -1704,6 +1693,7 @@ GameObject:
   - component: {fileID: 1160449190}
   - component: {fileID: 1160449189}
   - component: {fileID: 1160449192}
+  - component: {fileID: 1160449193}
   m_Layer: 5
   m_Name: Button - Main Menu
   m_TagString: Untagged
@@ -1787,9 +1777,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 994779338}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: MoveToMainMenuScene
+      - m_Target: {fileID: 1160449193}
+        m_TargetAssemblyTypeName: MainMenuButton, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1933,6 +1923,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1160449193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160449187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d53b2e87ebef394e9daf1dc9d7e1e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1242829975
 GameObject:
   m_ObjectHideFlags: 0

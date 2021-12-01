@@ -24,11 +24,6 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
-    public void ReturnToMainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
-
     //copying a lot of this from LevelEditorEditor
     public void LoadLevel(Level level)
     {
@@ -49,6 +44,7 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        Level nextLevel = GameManager.Instance.NextUnlockedLevel;
         LoadLevel(GameManager.Instance.NextUnlockedLevel);
     }
 
