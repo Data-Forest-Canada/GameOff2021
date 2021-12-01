@@ -72,6 +72,20 @@ public class GameManager : MonoBehaviour
         StartCoroutine(coWaitForLoading(sceneLoading));
     }
 
+    public void MoveToCreditsScene()
+    {
+        AsyncOperation sceneLoading = SceneManager.LoadSceneAsync("Credits");
+        sceneLoading.allowSceneActivation = false;
+        StartCoroutine(coWaitForLoading(sceneLoading));
+    }
+
+    public void MoveToMainMenuScene()
+    {
+        AsyncOperation sceneLoading = SceneManager.LoadSceneAsync("MainMenu");
+        sceneLoading.allowSceneActivation = false;
+        StartCoroutine(coWaitForLoading(sceneLoading));
+    }
+
     IEnumerator coWaitForLoading(AsyncOperation loadingOperation)
     {
         Timer timer = new Timer(this, sceneChangeDelay);
