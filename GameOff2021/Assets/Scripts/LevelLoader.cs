@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
@@ -21,6 +22,11 @@ public class LevelLoader : MonoBehaviour
         {
             LoadLevel(GameManager.Instance.CurrentLevel);
         }
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     //copying a lot of this from LevelEditorEditor
