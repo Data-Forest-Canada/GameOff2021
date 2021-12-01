@@ -91,7 +91,7 @@ public static class TilemapExtensions
 
     static Vector3Int[] getSurroundingPositions(Vector3Int position)
     {
-        bool oddY = (position.y % 2 == 1);
+        bool oddY = (Mathf.Abs(position.y % 2) == 1);
 
         Vector3Int[] surroundingPositions = new Vector3Int[6];
 

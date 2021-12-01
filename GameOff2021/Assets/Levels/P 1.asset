@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd4682a5d525eb4a8ca3548e1db071d, type: 3}
+  m_Name: P 1
+  m_EditorClassIdentifier: 
+  Tilemap: {fileID: 1964575672, guid: 8ade6ec6876f9f44b91b8b49086131b6, type: 3}
+  Pieces:
+  - {fileID: 11400000, guid: 849ef2e905c82c84ea62dac8abee1b42, type: 2}
+  - {fileID: 11400000, guid: ce32e01f19ad7154c8b1f6484eb0d936, type: 2}
+  - {fileID: 11400000, guid: 82282bb3d07832b4295927df44d85f8d, type: 2}
+  - {fileID: 11400000, guid: 2fddfa23414c8e74e870a6056510ac08, type: 2}
+  - {fileID: 11400000, guid: ecc8e14e045dcc5449688d93a9462639, type: 2}
+  - {fileID: 11400000, guid: db7a5cff02a950a419b139e9082d7668, type: 2}
+  - {fileID: 11400000, guid: 546d5512db11dca43a34a81b981f0009, type: 2}
+  - {fileID: 11400000, guid: dd8c126b8db60eb40a39f7bb75a78738, type: 2}
