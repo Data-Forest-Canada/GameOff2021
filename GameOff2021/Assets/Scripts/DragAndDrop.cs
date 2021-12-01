@@ -135,6 +135,12 @@ public class DragAndDrop : MonoBehaviour
             foreach (KeyValuePair<Vector3Int, GameTile> entry in transaction)
             {
                 levelTilemap.SetTile(entry.Key, entry.Value);
+
+            }
+
+            // Only apply once we have a full list with no nulls
+            foreach (KeyValuePair<Vector3Int, GameTile> entry in transaction)
+            {
                 entry.Value.OnPlace(levelTilemap, entry.Key);
             }
 
