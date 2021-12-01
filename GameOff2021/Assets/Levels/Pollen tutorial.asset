@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcd4682a5d525eb4a8ca3548e1db071d, type: 3}
+  m_Name: Pollen tutorial
+  m_EditorClassIdentifier: 
+  Tilemap: {fileID: 1964575672, guid: d68f0d6506dd36c409e42068b8015df5, type: 3}
+  Pieces:
+  - {fileID: 11400000, guid: 756876401c7120046a3f3fc176a104b2, type: 2}
+  - {fileID: 11400000, guid: 44aeb77eb85b0524ab6576051dfd4a76, type: 2}
+  - {fileID: 11400000, guid: 197a2f905abf2b74e9ac2b9094548253, type: 2}
+  - {fileID: 11400000, guid: 39f1cf940239335498721ae9d9e05091, type: 2}
+  - {fileID: 11400000, guid: 39f1cf940239335498721ae9d9e05091, type: 2}
+  - {fileID: 11400000, guid: 39f1cf940239335498721ae9d9e05091, type: 2}
