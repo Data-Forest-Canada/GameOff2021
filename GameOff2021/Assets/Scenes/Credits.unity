@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 207390012}
   - component: {fileID: 207390011}
   m_Layer: 5
-  m_Name: Level Select Panel
+  m_Name: Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -684,6 +684,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1652167481}
     m_Modifications:
+    - target: {fileID: 850045125467693324, guid: 63e930d53538eb04bb5746032a9de229, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c26a1578b39fef24e99006c048705c1a, type: 3}
+    - target: {fileID: 850045125467693324, guid: 63e930d53538eb04bb5746032a9de229, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521713731724877556, guid: 63e930d53538eb04bb5746032a9de229, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9a427ab7f2368104eb29b362845242c4, type: 2}
+    - target: {fileID: 1521713731724877556, guid: 63e930d53538eb04bb5746032a9de229, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5910424439398943056, guid: 63e930d53538eb04bb5746032a9de229, type: 3}
       propertyPath: m_Name
       value: Credit
@@ -1311,6 +1327,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1652167481}
     m_Modifications:
+    - target: {fileID: 850045125467693324, guid: 63e930d53538eb04bb5746032a9de229, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4e2db2de9ac90ea41a723d0d0be1bcca, type: 3}
+    - target: {fileID: 850045125467693324, guid: 63e930d53538eb04bb5746032a9de229, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521713731724877556, guid: 63e930d53538eb04bb5746032a9de229, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: aa88dd674f597f64bbd663d3cb014562, type: 2}
+    - target: {fileID: 1521713731724877556, guid: 63e930d53538eb04bb5746032a9de229, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5910424439398943056, guid: 63e930d53538eb04bb5746032a9de229, type: 3}
       propertyPath: m_Name
       value: Credit (1)
@@ -2869,6 +2901,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1631600428}
     m_Modifications:
+    - target: {fileID: 850045125467693324, guid: 63e930d53538eb04bb5746032a9de229, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521713731724877556, guid: 63e930d53538eb04bb5746032a9de229, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5910424439398943056, guid: 63e930d53538eb04bb5746032a9de229, type: 3}
       propertyPath: m_Name
       value: Credit
