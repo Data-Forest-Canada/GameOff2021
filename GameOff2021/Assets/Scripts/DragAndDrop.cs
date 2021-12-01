@@ -119,14 +119,12 @@ public class DragAndDrop : MonoBehaviour
                 // If we hit a null tile we can just abort. We reset the piece positionm before we go
                 if (newTile == null)
                 {
-                    foreach(Vector3Int pos2 in piecePositions)
+                    foreach (Vector3Int pos2 in piecePositions)
                     {
                         selected.SetTile(pos2, original[pos2]);
                     }
                     selected.transform.SetParent(pieceLayer.transform);
                     selected.transform.position = originalPosition;
-
-                    
 
                     return;
                 }

@@ -11,8 +11,11 @@ public class LevelSelectButton : MonoBehaviour
     Button button;
     TMP_Text textField;
 
+    static GameManager manager;
+
     private void Awake()
     {
+        if (manager == null) manager = GameManager.Instance;
         button = GetComponent<Button>();
         textField = GetComponentInChildren<TMP_Text>();
     }
@@ -20,7 +23,7 @@ public class LevelSelectButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        button.interactable = GameManager.Instance.IsLevelUnlocked(levelIndex);
+        button.interactable = manager.IsLevelUnlocked(levelIndex);
 
         if (textField != null)
         {

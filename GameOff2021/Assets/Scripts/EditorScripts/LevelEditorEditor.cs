@@ -104,12 +104,15 @@ public class LevelEditorEditor : Editor
 
             // Create a path and then save
             string path = AssetDatabase.GenerateUniqueAssetPath("Assets/Levels/NewLevel.asset");
-            Debug.Log(path);
+
             AssetDatabase.CreateAsset(level, path);
+            EditorUtility.SetDirty(level);
+            AssetDatabase.SaveAssets();
         }
         else
         {
             fillLevel();
+            EditorUtility.SetDirty(level);
             AssetDatabase.SaveAssets();
         }
     }
